@@ -7,7 +7,10 @@ public class StudentMember extends Member{
     private String studentId;
     private String collegeName;
 
-    public StudentMember(String email, String name, String address, String gender, double height, double startingWeight, String chosenPackage, String studentId, String collegeName) {
+    public StudentMember(String email, String name, String address, String gender,
+                         double height, double startingWeight, String chosenPackage,
+                         String studentId, String collegeName){
+
         super(email, name, address, gender, height, startingWeight, chosenPackage);
         this.studentId = studentId;
         this.collegeName = collegeName;
@@ -29,15 +32,18 @@ public class StudentMember extends Member{
         this.collegeName = collegeName;
     }
 
+    public void chosenPackage(String packageChoice){
+        chosenPackage = packageChoice;
+        //default package 3
+        //parameter to package assoc with college
+    }
+
     @Override
     public String toString() {
-        return "StudentMember{" +
+        return super.toString() +
+                "StudentMember{" +
                 "studentId='" + studentId + '\'' +
                 ", collegeName='" + collegeName + '\'' +
                 '}';
-    }
-
-    public void chosenPackage(String packageChoice){
-
     }
 }

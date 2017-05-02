@@ -11,14 +11,17 @@ public abstract class Person {
 
     public Person(String email, String name, String address, String gender) {
         this.email = email;
+
         if (name.length() > 30) {//limit string length to 30 characters
             this.name = name.substring(0, 30);
         } else {
             this.name = name;
         }
+
         this.address = address;
-        if (gender.equals("M") || gender.equals("m") || gender.equals("F") || gender.equals("f")) {//return capital letter only for valid entry
-            gender = gender.toUpperCase();
+
+        gender = gender.toUpperCase();
+        if (gender.equals("M") || gender.equals("F")){
             this.gender = gender;
         } else {//default to unspecified if other entry made
             this.gender = "Unspecified";

@@ -12,21 +12,26 @@ import java.util.SortedSet;
 public abstract class Member extends Person{
     private double height;
     private double startingWeight;
-    private String chosenPackage;
+    public String chosenPackage;
     private HashMap<Date,String> assessmentDetails;
 
-    public Member(String email, String name, String address, String gender, double height, double startingWeight, String chosenPackage) {
+    public Member(String email, String name, String address, String gender,
+                  double height, double startingWeight, String chosenPackage) {
+
         super(email, name, address, gender);
+
         if(height >= 1 && height <= 3) {//values between 1 and 3 only
             this.height = height;
         } else {//default to 0 if invalid entry made
             this.height = 0;
         }
+
         if(startingWeight >= 35 && startingWeight <= 250) {//values between 35 and 250 only
             this.startingWeight = startingWeight;
         } else {//default to 0 if invalid entry made
             this.startingWeight = 0;
         }
+
         this.chosenPackage = chosenPackage;
     }
 
@@ -65,14 +70,14 @@ public abstract class Member extends Person{
     }
 
     public Assessment latestAssessment(){
-
+        return null;
     }
 
     public SortedSet<Date> sortedAssessmentDates(){
-
+        return null;
     }
 
-    public abstract void chosenPackage();
+    public abstract void chosenPackage(String chosenPackage);
 
 
 }
