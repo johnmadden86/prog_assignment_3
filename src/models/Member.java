@@ -13,26 +13,22 @@ public abstract class Member extends Person{
     private double height;
     private double startingWeight;
     public String chosenPackage;
-    private HashMap<Date,String> assessmentDetails;
+    private HashMap<Date,Assessment> assessments;
 
     public Member(String email, String name, String address, String gender,
                   double height, double startingWeight, String chosenPackage) {
 
         super(email, name, address, gender);
 
-        if(height >= 1 && height <= 3) {//values between 1 and 3 only
-            this.height = height;
-        } else {//default to 0 if invalid entry made
-            this.height = 0;
-        }
+        this.height = height;
 
-        if(startingWeight >= 35 && startingWeight <= 250) {//values between 35 and 250 only
-            this.startingWeight = startingWeight;
-        } else {//default to 0 if invalid entry made
-            this.startingWeight = 0;
-        }
+        this.startingWeight = startingWeight;
 
         this.chosenPackage = chosenPackage;
+    }
+
+    public void addAssessment(Date date,Assessment assessment){
+        assessments.put(date, assessment);
     }
 
     public double getHeight() {
@@ -62,11 +58,9 @@ public abstract class Member extends Person{
     @Override
     public String toString() {
         return super.toString() +
-                "Member{" +
                 "height=" + height +
                 ", startingWeight=" + startingWeight +
-                ", chosenPackage='" + chosenPackage + '\'' +
-                '}';
+                ", chosenPackage='" + chosenPackage + '\'';
     }
 
     public Assessment latestAssessment(){

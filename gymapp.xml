@@ -1,0 +1,40 @@
+<object-stream>
+  <controllers.GymApi>
+    <members>
+      <models.StudentMember>
+        <email>johnmadden86@gmail.com</email>
+        <name>John Madden</name>
+        <address>8 Springmount</address>
+        <gender>M</gender>
+        <height>1.85</height>
+        <startingWeight>89.4</startingWeight>
+        <chosenPackage>Student</chosenPackage>
+        <studentId>20077700</studentId>
+        <collegeName>WIT</collegeName>
+      </models.StudentMember>
+      <models.PremiumMember>
+        <email>azk@ch.ng</email>
+        <name>Chizom Aziken</name>
+        <address>Fermoy</address>
+        <gender>F</gender>
+        <height>1.65</height>
+        <startingWeight>76.8</startingWeight>
+        <chosenPackage>Normal</chosenPackage>
+      </models.PremiumMember>
+    </members>
+    <trainers>
+      <models.Trainer>
+        <email>tony:sop.it</email>
+        <name>Tony Soprano</name>
+        <address>Newark</address>
+        <gender>M</gender>
+      </models.Trainer>
+      <models.Trainer>
+        <email>ch@nj.us</email>
+        <name>Chris Moltisanti</name>
+        <address>NJ</address>
+        <gender>M</gender>
+      </models.Trainer>
+    </trainers>
+  </controllers.GymApi>
+</object-stream>

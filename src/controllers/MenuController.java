@@ -1,16 +1,16 @@
 package controllers;
+import models.*;
 
-import models.Member;
-import models.PremiumMember;
-import models.StudentMember;
-import models.Trainer;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Date;
 
-import java.util.ArrayList;
-
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
-import static utils.ScannerInput.validNextDouble;
-import static utils.ScannerInput.validNextInt;
-import static utils.ScannerInput.validNextString;
+import static utils.ScannerInput.*;
 
 /**
  * Created by John on 24/04/2017.
@@ -20,7 +20,6 @@ class MenuController {
 
     /**
      * Main method to run the program
-     *
      * @param args As required by main
      */
     public static void main(String[] args) {
@@ -32,6 +31,11 @@ class MenuController {
      */
     private MenuController() {
         gymApi = new GymApi();
+        try {
+            load();
+        } catch (Exception e) {
+            System.err.println("Error reading from file: " + e);
+        }
         homePage();
     }
 
@@ -56,17 +60,24 @@ class MenuController {
                     memberOrTrainer(true);
                     break;
                 case "X":
-                    System.out.println("Exiting... bye");
+                    try {
+                        save();
+                        System.out.println("Exiting... bye");
+                    }
+                    catch (Exception e) {
+                        System.err.println("Error writing to file: " + e);
+                    }
                     System.exit(0);
                 default:
                     System.out.println("Invalid option entered: " + option);
+                    pause();
                     homePage();
                     break;
             }
     }
 
     private void memberOrTrainer(boolean reg) {
-        System.out.println("  Select an option");
+        System.out.println("\n  Select an option");
         System.out.println("-----------");
         System.out.println("  M) Member");
         System.out.println("  T) Trainer");
@@ -85,6 +96,7 @@ class MenuController {
                 }
             } else {
                 System.out.println("Invalid option entered: " + mOrT);
+                pause();
                 memberOrTrainer(reg);
             }
         }
@@ -92,7 +104,7 @@ class MenuController {
     }
 
     private void registration(String mOrT) {
-        System.out.println("Enter registration details");
+        System.out.println("\nEnter registration details");
         pause();
         String name = validNextString("Enter name: ");
         String address = validNextString("Enter address: ");
@@ -100,33 +112,38 @@ class MenuController {
         String gender = validNextString("Enter gender (M/F): ");
         if(mOrT.equals("T")){
             String speciality = validNextString("Pick a speciality: " );
-            gymApi.addTrainer(new Trainer(email, name, address, gender, speciality));
-            trainerWelcomePage(email);
+            Trainer trainer = new Trainer(email, name, address, gender, speciality);
+            gymApi.addTrainer(trainer);
+            trainerWelcomePage(trainer);
         } else {
+            Member member = null;
             double height = validNextDouble("Enter height: ");
             double startingWeight = validNextDouble("Enter starting weight: ");
             String packageChoice = validNextString("Enter package choice: ");
             if (!packageChoice.equals("Student")) {
-                gymApi.addMember(new PremiumMember(email, name, address, gender, height, startingWeight, packageChoice));
+                member = new PremiumMember(email, name, address, gender, height, startingWeight, packageChoice);
+                gymApi.addMember(member);
             } else {
                 String studentId = validNextString("Enter student ID: ");
                 String collegeName = validNextString("Enter college name: ");
-                gymApi.addMember(new StudentMember(email, name, address, gender, height, startingWeight, packageChoice, studentId, collegeName));
+                member = new StudentMember(email, name, address, gender, height, startingWeight, packageChoice, studentId, collegeName);
+                gymApi.addMember(member);
             }
-            memberWelcomePage(email);
+            memberWelcomePage(member);
         }
     }
 
     private void login(String mOrT) {
         String email = validNextString("Enter email address: ");
+
         if(mOrT.equals("T")) {
-            trainerWelcomePage(email);
+            trainerWelcomePage(gymApi.searchTrainersByEmail(email));
         } else {
-            memberWelcomePage(email);
+            memberWelcomePage(gymApi.searchMembersByEmail(email));
         }
     }
 
-    private void trainerWelcomePage(String email) {
+    private void trainerWelcomePage(Person trainer) {
         System.out.println("  Select an option");
         System.out.println("-----------");
         System.out.println("  1) Add a new member");
@@ -138,55 +155,89 @@ class MenuController {
         System.out.println("  7) Assessment sub-menu");
         System.out.println("  8) Reports sub-menu");
         System.out.println("-----------");
-        System.out.println("  0) Back to previous menu");
+        System.out.println("  0) Logout");
 
         int option = validNextInt("=>>");
 
         switch (option) {
             case 1:
+                registration("M");
                 break;
             case 2:
+                System.out.println(gymApi.listMembers());
                 break;
             case 3:
+                String mailSearch = validNextString("Enter a search term: ");
+                System.out.println(gymApi.searchMembersByEmail(mailSearch));
                 break;
             case 4:
+                String nameSearch = validNextString("Enter a search term: ");
+                System.out.println(gymApi.searchMembersByName(nameSearch));
                 break;
             case 5:
+                System.out.println(gymApi.listMembersWithIdealWeight());
                 break;
             case 6:
+                String category = validNextString("Enter a BMI category: ");
+                System.out.println(gymApi.listMembersBySpecificBMICategory(category));
                 break;
             case 7:
+                assessmentSubMenu(trainer);
                 break;
             case 8:
+                reportsSubMenu(trainer);
                 break;
-            case 9:
+            case 0:
+                System.out.println("Logging out...");
+                pause();
+                homePage();
                 break;
             default:
+                System.out.println("Invalid option entered: " + option);
                 break;
         }
+        pause();
+        trainerWelcomePage(trainer);
     }
 
-    private void assessmentSubMenu(String email) {
+    private void assessmentSubMenu(Person trainer) {
         System.out.println("  Select an option");
         System.out.println("-----------");
         System.out.println("  1) Add an assessment for a member");
-        System.out.println("  2) Update commment on an assessment for a member");
+        System.out.println("  2) Update comment on an assessment for a member");
         System.out.println("-----------");
         System.out.println("  0) Back to previous menu");
 
         int option = validNextInt("=>>");
 
+        Trainer trainerDownCast = (Trainer) trainer;
+
         switch (option) {
             case 1:
+                String mailSearch = validNextString("Enter a search term: ");
+                Member member = gymApi.searchMembersByEmail(mailSearch);
+                Date date = readValidDate("Date of assessment: ");
+                double weight = validNextDouble("Weight: ");
+                double chest = validNextDouble("Chest: ");
+                double thigh = validNextDouble("Thigh: ");
+                double upperArm = validNextDouble("Upper Arm: ");
+                double waist = validNextDouble("Waist: ");
+                member.addAssessment(date, new Assessment(weight, chest, thigh, upperArm, waist, trainerDownCast));
                 break;
             case 2:
                 break;
+            case 0:
+                trainerWelcomePage(trainer);
+                break;
             default:
+                System.out.println("Invalid option entered: " + option);
+                pause();
                 break;
         }
+        assessmentSubMenu(trainer);
     }
 
-    private void reportsSubMenu(String email) {
+    private void reportsSubMenu(Person trainer) {
         System.out.println("  Select an option");
         System.out.println("-----------");
         System.out.println("  1) Specific member progress (via email search)");
@@ -199,24 +250,32 @@ class MenuController {
 
         switch (option) {
             case 1:
+                String mailSearch = validNextString("Enter a search term: ");
                 break;
             case 2:
+                String nameSearch = validNextString("Enter a search term: ");
                 break;
             case 3:
                 break;
+            case 0:
+                trainerWelcomePage(trainer);
+                break;
             default:
+                System.out.println("Invalid option entered: " + option);
+                pause();
                 break;
         }
+        reportsSubMenu(trainer);
     }
 
-    private void memberWelcomePage(String email) {
-        System.out.println("  Select an option");
+    private void memberWelcomePage(Member member) {
+        System.out.println("  Welcome");
         System.out.println("-----------");
         System.out.println("  1) View profile");
         System.out.println("  2) Update profile");
         System.out.println("  3) Progress sub-menu");
         System.out.println("-----------");
-        System.out.println("  0) Back to previous menu");
+        System.out.println("  0) Logout");
 
         int option = validNextInt("=>>");
 
@@ -227,12 +286,19 @@ class MenuController {
                 break;
             case 3:
                 break;
+            case 0:
+                System.out.println("Logging out...");
+                pause();
+                homePage();
             default:
+                System.out.println("Invalid option entered: " + option);
+                pause();
                 break;
         }
+        memberWelcomePage(member);
     }
 
-    private void progresssubMenu(String email) {
+    private void progressSubMenu(Member member) {
         System.out.println("  Select an option");
         System.out.println("-----------");
         System.out.println("  1) View progress by weight");
@@ -259,13 +325,34 @@ class MenuController {
                 break;
             case 6:
                 break;
+            case 0:
+                memberWelcomePage(member);
             default:
+                System.out.println("Invalid option entered: " + option);
+                pause();
                 break;
         }
+        progressSubMenu(member);
     }
 
     private void pause() {
         validNextString("Press any key to continue...\n");
+    }
+
+    private void save() throws Exception
+    {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("gymapp.xml"));
+        out.writeObject(gymApi);
+        out.close();
+    }
+
+    private void load() throws Exception
+    {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("gymapp.xml"));
+        gymApi = (GymApi) is.readObject();
+        is.close();
     }
 
 }

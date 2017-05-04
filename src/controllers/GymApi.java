@@ -3,7 +3,7 @@ package controllers;
 import models.Member;
 import models.Person;
 import models.Trainer;
-
+import static utils.Analytics.*;
 import java.util.ArrayList;
 
 /**
@@ -51,28 +51,88 @@ public class GymApi {
     }
 
     public Member searchMembersByEmail(String emailEntered){
-        return null;
+        Member searchResult = null;
+        for (Member member : members) {
+            if(member.getEmail().contains(emailEntered)) {
+                searchResult = member;
+            }
+        }
+        return searchResult;
     }
 
     public String searchMembersByName(String nameEntered){
-        return null;
-    }
-
-    public Person searchTrainersByEmail(String emailEntered){
-        return null;
-    }
-
-    public String listMembers() {
-        return null;
+        StringBuilder list = new StringBuilder();
+        for (Member member : members) {
+            if(member.getEmail().contains(nameEntered)) {
+                list.append(member.getName()).append("\n");
+            }
+        }
+        if (list.toString().equals("")) {
+            return "No members";
+        } else {
+            return list.toString();
+        }
     }
 
     public String listMembersWithIdealWeight() {
-        return null;
+        if(members.size() == 0) {
+            return "No members";
+        } else {
+            StringBuilder list = new StringBuilder();
+            for (Member member : members) {
+                if(isIdealBodyWeight(member, member.latestAssessment())) {
+                    list.append(member.getName()).append("\n");
+                }
+            }
+            if (list.toString().equals("")) {
+                return "No members with an ideal body weight";
+            } else {
+                return list.toString();
+            }
+        }
+    }
+
+
+    public Person searchTrainersByEmail(String emailEntered){
+        Person searchResult = null;
+        ArrayList<Person> persons = new ArrayList<>(members);
+        persons.addAll(trainers);
+        for (Person person : persons) {
+            if(person.getEmail().contains(emailEntered)) {
+                searchResult = person;
+            }
+        }
+        return searchResult;
+    }
+
+    public String listMembers() {
+        StringBuilder list = new StringBuilder();
+        for (int index = 0; index < members.size(); index++) {
+            list.append(index).append(" - ").append(members.get(index).getName()).append("\n");
+        }
+        if (list.toString().equals("")) {
+            return "No members";
+        } else {
+            return list.toString();
+        }
     }
 
     public String listMembersBySpecificBMICategory(String category) {
-        return null;
-    }
+        if(members.size() == 0) {
+            return "No members";
+        } else {
+            StringBuilder list = new StringBuilder();
+            for (Member member : members) {
+                if(determineBMICategory(calculateBMI(member, member.latestAssessment())).equals(category)) {
+                    list.append(member.getName()).append("\n");
+                }
+            }
+            if (list.toString().equals("")) {
+                return "No members with an ideal body weight";
+            } else {
+                return list.toString();
+            }
+        }    }
 
     public String listMemberDetailsImperialAndMetric() {
         return null;

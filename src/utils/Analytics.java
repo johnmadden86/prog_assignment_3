@@ -13,7 +13,7 @@ public class Analytics {
      * Calculate a member's body mass index, weight divided by height squared
      * @return  Member's BMI (kg m ^-2) truncated to two decimal places
      */
-    private static double calculateBMI(Member member, Assessment assessment){
+    public static double calculateBMI(Member member, Assessment assessment){
         return toTwoDecimalPlaces(member.getStartingWeight() / (member.getHeight() * member.getHeight()));
     }
 
