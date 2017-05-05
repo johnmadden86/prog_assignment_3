@@ -10,14 +10,17 @@ public class Assessment {
     private double upperArm;
     private double waist;
     private Trainer trainer;
+    private String comment;
 
-    public Assessment(double weight, double chest, double thigh, double upperArm, double waist, Trainer trainer) {
+    public Assessment(double weight, double chest, double thigh, double upperArm,
+                      double waist, Trainer trainer, String comment) {
         this.weight = weight;
         this.chest = chest;
         this.thigh = thigh;
         this.upperArm = upperArm;
         this.waist = waist;
         this.trainer = trainer;
+        this.comment = comment;
     }
 
     public double getWeight() {
@@ -68,9 +71,17 @@ public class Assessment {
         this.trainer = trainer;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
-        return "Assessment{" +
+        return "AssessmentTest{" +
                 "weight=" + weight +
                 ", chest=" + chest +
                 ", thigh=" + thigh +

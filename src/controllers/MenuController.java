@@ -104,8 +104,6 @@ class MenuController {
     }
 
     private void registration(String mOrT) {
-        System.out.println("\nEnter registration details");
-        pause();
         String name = validNextString("Enter name: ");
         String address = validNextString("Enter address: ");
         String email = validNextString("Enter email address: ");
@@ -152,7 +150,7 @@ class MenuController {
         System.out.println("  4) Search for a member by name");
         System.out.println("  5) List members with ideal body weight");
         System.out.println("  6) List members with a specific BMI category");
-        System.out.println("  7) Assessment sub-menu");
+        System.out.println("  7) AssessmentTest sub-menu");
         System.out.println("  8) Reports sub-menu");
         System.out.println("-----------");
         System.out.println("  0) Logout");
@@ -222,7 +220,9 @@ class MenuController {
                 double thigh = validNextDouble("Thigh: ");
                 double upperArm = validNextDouble("Upper Arm: ");
                 double waist = validNextDouble("Waist: ");
-                member.addAssessment(date, new Assessment(weight, chest, thigh, upperArm, waist, trainerDownCast));
+                String comment = validNextString("Enter comment: ");
+                member.addAssessment(date,
+                        new Assessment(weight, chest, thigh, upperArm, waist, trainerDownCast, comment));
                 break;
             case 2:
                 break;

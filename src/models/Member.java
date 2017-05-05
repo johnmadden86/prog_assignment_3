@@ -19,12 +19,10 @@ public abstract class Member extends Person{
                   double height, double startingWeight, String chosenPackage) {
 
         super(email, name, address, gender);
-
         this.height = height;
-
         this.startingWeight = startingWeight;
-
         this.chosenPackage = chosenPackage;
+        assessments = new HashMap<>();
     }
 
     public void addAssessment(Date date,Assessment assessment){
@@ -45,6 +43,14 @@ public abstract class Member extends Person{
 
     public void setStartingWeight(double startingWeight) {
         this.startingWeight = startingWeight;
+    }
+
+    public double getCurrentWeight() {
+        double weight = getStartingWeight();
+        if (latestAssessment() != null) {
+            weight = latestAssessment().getWeight();
+        }
+        return weight;
     }
 
     public String getChosenPackage() {

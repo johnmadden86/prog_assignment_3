@@ -1,40 +1,37 @@
 <object-stream>
   <controllers.GymApi>
     <members>
-      <models.StudentMember>
-        <email>johnmadden86@gmail.com</email>
-        <name>John Madden</name>
-        <address>8 Springmount</address>
-        <gender>M</gender>
-        <height>1.85</height>
-        <startingWeight>89.4</startingWeight>
-        <chosenPackage>Student</chosenPackage>
-        <studentId>20077700</studentId>
-        <collegeName>WIT</collegeName>
-      </models.StudentMember>
       <models.PremiumMember>
-        <email>azk@ch.ng</email>
-        <name>Chizom Aziken</name>
-        <address>Fermoy</address>
-        <gender>F</gender>
-        <height>1.65</height>
-        <startingWeight>76.8</startingWeight>
-        <chosenPackage>Normal</chosenPackage>
+        <email>wayne@manutd.com</email>
+        <name>Wayne Rooney</name>
+        <address>Liverpool</address>
+        <gender>M</gender>
+        <height>1.78</height>
+        <startingWeight>78.0</startingWeight>
+        <chosenPackage>Premium</chosenPackage>
+        <assessments>
+          <entry>
+            <date>2009-09-11 23:00:00.0 UTC</date>
+            <models.Assessment>
+              <weight>78.9</weight>
+              <chest>45.0</chest>
+              <thigh>34.0</thigh>
+              <upperArm>23.0</upperArm>
+              <waist>56.0</waist>
+              <trainer>
+                <email>jose@manutd.pt</email>
+                <name>Jose Mourinho</name>
+                <address>Portugal</address>
+                <gender>M</gender>
+              </trainer>
+              <comment>good</comment>
+            </models.Assessment>
+          </entry>
+        </assessments>
       </models.PremiumMember>
     </members>
     <trainers>
-      <models.Trainer>
-        <email>tony:sop.it</email>
-        <name>Tony Soprano</name>
-        <address>Newark</address>
-        <gender>M</gender>
-      </models.Trainer>
-      <models.Trainer>
-        <email>ch@nj.us</email>
-        <name>Chris Moltisanti</name>
-        <address>NJ</address>
-        <gender>M</gender>
-      </models.Trainer>
+      <models.Trainer reference="../../members/models.PremiumMember/assessments/entry/models.Assessment/trainer"/>
     </trainers>
   </controllers.GymApi>
 </object-stream>

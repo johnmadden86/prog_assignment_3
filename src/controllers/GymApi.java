@@ -42,6 +42,12 @@ public class GymApi {
         return trainers.size();
     }
 
+    public ArrayList<Person> getPersons() {
+        ArrayList<Person> persons = new ArrayList<>(members);
+        persons.addAll(trainers);
+        return persons;
+    }
+
     public boolean isValidMemberIndex(int index){
         return false;
     }
@@ -53,7 +59,7 @@ public class GymApi {
     public Member searchMembersByEmail(String emailEntered){
         Member searchResult = null;
         for (Member member : members) {
-            if(member.getEmail().contains(emailEntered)) {
+            if(member.getEmail().equals(emailEntered)) {
                 searchResult = member;
             }
         }
@@ -75,12 +81,12 @@ public class GymApi {
     }
 
     public String listMembersWithIdealWeight() {
-        if(members.size() == 0) {
+        if(members.isEmpty()) {
             return "No members";
         } else {
             StringBuilder list = new StringBuilder();
             for (Member member : members) {
-                if(isIdealBodyWeight(member, member.latestAssessment())) {
+                if(isIdealBodyWeight(member)) {
                     list.append(member.getName()).append("\n");
                 }
             }
@@ -92,13 +98,10 @@ public class GymApi {
         }
     }
 
-
     public Person searchTrainersByEmail(String emailEntered){
         Person searchResult = null;
-        ArrayList<Person> persons = new ArrayList<>(members);
-        persons.addAll(trainers);
-        for (Person person : persons) {
-            if(person.getEmail().contains(emailEntered)) {
+        for (Person person : getPersons()) {
+            if(person.getEmail().equals(emailEntered)) {
                 searchResult = person;
             }
         }
@@ -123,7 +126,7 @@ public class GymApi {
         } else {
             StringBuilder list = new StringBuilder();
             for (Member member : members) {
-                if(determineBMICategory(calculateBMI(member, member.latestAssessment())).equals(category)) {
+                if(determineBMICategory(calculateBMI(member)).equals(category)) {
                     list.append(member.getName()).append("\n");
                 }
             }
@@ -138,11 +141,4 @@ public class GymApi {
         return null;
     }
 
-    public void load() throws Exception {
-
-    }
-
-    public void store() throws Exception {
-
-    }
 }

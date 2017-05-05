@@ -13,8 +13,8 @@ public class Analytics {
      * Calculate a member's body mass index, weight divided by height squared
      * @return  Member's BMI (kg m ^-2) truncated to two decimal places
      */
-    public static double calculateBMI(Member member, Assessment assessment){
-        return toTwoDecimalPlaces(member.getStartingWeight() / (member.getHeight() * member.getHeight()));
+    public static double calculateBMI(Member member){
+        return toTwoDecimalPlaces(member.getCurrentWeight() / (member.getHeight() * member.getHeight()));
     }
 
     /**
@@ -59,20 +59,20 @@ public class Analytics {
      * Members under 5ft are assigned the IBW of a 5ft member
      * @return  True if starting weight = ideal body weight. False otherwise.
      */
-    public static boolean isIdealBodyWeight(Member member, Assessment assessment) {
+    public static boolean isIdealBodyWeight(Member member) {
         double inchHeight = convertHeightMetresToInches(member.getHeight());
-        if (inchHeight > 60) {
-            inchHeight = inchHeight - 60;
-        } else {
-            inchHeight = 0;
-        }
+            if (inchHeight > 60) {
+                inchHeight = inchHeight - 60;
+            } else {
+                inchHeight = 0;
+            }
         double idealBodyWeight = 2.3 * inchHeight;
-        if (member.getGender().equals("M")) {
-            idealBodyWeight = idealBodyWeight + 50;
-        } else {
-            idealBodyWeight = idealBodyWeight + 45.5;
-        }
-        return idealBodyWeight <= member.getStartingWeight() + 2 && idealBodyWeight >= member.getStartingWeight() - 2;
+            if (member.getGender().equals("M")) {
+                idealBodyWeight = idealBodyWeight + 50;
+            } else {
+                idealBodyWeight = idealBodyWeight + 45.5;
+            }
+        return idealBodyWeight <= member.getCurrentWeight() + 2 && idealBodyWeight >= member.getCurrentWeight() - 2;
     }
 
     /**
