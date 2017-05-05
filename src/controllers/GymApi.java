@@ -121,7 +121,7 @@ public class GymApi {
     }
 
     public String listMembersBySpecificBMICategory(String category) {
-        if(members.size() == 0) {
+        if(members.isEmpty()) {
             return "No members";
         } else {
             StringBuilder list = new StringBuilder();

@@ -16,6 +16,7 @@ import static utils.ScannerInput.*;
  * Created by John on 24/04/2017.
  */
 class MenuController {
+
     private GymApi gymApi;
 
     /**
@@ -225,6 +226,7 @@ class MenuController {
                         new Assessment(weight, chest, thigh, upperArm, waist, trainerDownCast, comment));
                 break;
             case 2:
+
                 break;
             case 0:
                 trainerWelcomePage(trainer);
