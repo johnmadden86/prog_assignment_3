@@ -4,16 +4,13 @@ package models;
  * Created by John on 24/04/2017.
  */
 public class Assessment {
-    private double weight;
-    private double chest;
-    private double thigh;
-    private double upperArm;
-    private double waist;
-    private Trainer trainer;
+    private double weight, chest, thigh, upperArm, waist, hips;
     private String comment;
 
+    private Trainer trainer;
+
     public Assessment(double weight, double chest, double thigh, double upperArm,
-                      double waist, Trainer trainer, String comment) {
+                      double waist, double hips, Trainer trainer, String comment) {
         this.weight = weight;
         this.chest = chest;
         this.thigh = thigh;
@@ -61,6 +58,14 @@ public class Assessment {
 
     public void setWaist(double waist) {
         this.waist = waist;
+    }
+
+    public double getHips() {
+        return hips;
+    }
+
+    public void setHips(double hips) {
+        this.hips = hips;
     }
 
     public Trainer getTrainer() {

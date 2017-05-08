@@ -1,14 +1,15 @@
 package models;
 
+import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.Callable;
 
 
 /**
  * Created by John on 24/04/2017.
  */
-public abstract class Member extends Person{
-    private double height;
-    private double startingWeight;
+public abstract class Member extends Person {
+    private double height, startingWeight;
     public String chosenPackage;
     private HashMap<Date,Assessment> assessments;
 
@@ -24,6 +25,14 @@ public abstract class Member extends Person{
 
     public void addAssessment(Date date, Assessment assessment){
         assessments.put(date, assessment);
+    }
+
+    public HashMap<Date, Assessment> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(HashMap<Date, Assessment> assessments) {
+        this.assessments = assessments;
     }
 
     public double getHeight() {
@@ -66,15 +75,46 @@ public abstract class Member extends Person{
                 ", chosenPackage='" + chosenPackage + '\'';
     }
 
-    public Assessment latestAssessment(){
+    public Assessment latestAssessment() {
         return assessments.get(sortedAssessmentDates().last());
     }
 
-    public SortedSet<Date> sortedAssessmentDates(){
-        SortedSet<Date> dates = new TreeSet<>(assessments.keySet());
-        dates.addAll(assessments.keySet());
-        return dates;
+    public SortedSet<Date> sortedAssessmentDates() {
+        return new TreeSet<>(assessments.keySet());
     }
+
+    public String getProgress () {
+        StringBuilder weightProgress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            weightProgress.append(date).append(" - ")
+                    .append(getAssessments().get(date).getWeight()).append("\n");
+        }
+        return weightProgress.toString();
+    }
+
+    public interface Command
+    {
+        public void execute(Object data);
+    }
+
+    public class PrintCommand implements Command
+    {
+        public void execute(Object data)
+        {
+            System.out.println(data.toString());
+        }
+    }
+
+    public  void callCommand(Command command, Object data)
+    {
+        command.execute(data);
+    }
+
+    public  void main(String... args)
+    {
+        callCommand(new PrintCommand(), "hello world");
+    }
+
 
     public abstract void chosenPackage(String chosenPackage);
 

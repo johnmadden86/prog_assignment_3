@@ -68,9 +68,9 @@ public class GymApi {
 
     public String searchMembersByName(String nameEntered){
         StringBuilder list = new StringBuilder();
-        for (Member member : members) {
-            if(member.getEmail().contains(nameEntered)) {
-                list.append(member.getName()).append("\n");
+        for (int index = 0; index < members.size(); index++) {
+            if(members.get(index).getName().contains(nameEntered)) {
+                list.append(index).append(" - ").append(members.get(index).getName()).append("\n");
             }
         }
         if (list.toString().equals("")) {

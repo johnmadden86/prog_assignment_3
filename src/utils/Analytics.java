@@ -1,14 +1,50 @@
 package utils;
 
+import groovy.json.internal.ArrayUtils;
 import models.Assessment;
 import models.Member;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.management.GarbageCollectorMXBean;
+import java.util.ArrayList;
+
 /**
  * Created by John on 24/04/2017.
  */
 public class Analytics {
+    private static ArrayList<String> bmiCategories;
+
+    public Analytics() {
+        bmiCategories = new ArrayList<>();
+        addCategories();
+    }
+
+    private void addCategories() {
+        bmiCategories.add("Very severely underweight");
+        bmiCategories.add("Severely underweight");
+        bmiCategories.add("Underweight");
+        bmiCategories.add("Normal");
+        bmiCategories.add("Overweight");
+        bmiCategories.add("Moderately Obese");
+        bmiCategories.add("Severely Obese");
+        bmiCategories.add("Very severely obese");
+    }
+
+    public static String getBmiCategory(int index) {
+        return bmiCategories.get(index);
+    }
+
+    @NotNull
+    public static String listBmiCategories() {
+        StringBuilder list = new StringBuilder();
+        for (int index = 0; index < bmiCategories.size(); index++) {
+            list.append(index).append(" - ").append(getBmiCategory(index)).append("\n");
+        }
+        return list.toString();
+    }
+
+
     /**
      * Calculate a member's body mass index, weight divided by height squared
      * @return  Member's BMI (kg m ^-2) truncated to two decimal places
@@ -34,21 +70,21 @@ public class Analytics {
     @Contract(pure = true)
     public static String determineBMICategory(double bmiValue) {
         if (bmiValue < 15) {
-            return "VERY SEVERELY UNDERWEIGHT";
+            return getBmiCategory(0);
         } else if (bmiValue >= 15 && bmiValue < 16) {
-            return "SEVERELY UNDERWEIGHT";
+            return getBmiCategory(1);
         } else if (bmiValue >= 16 && bmiValue < 18.5) {
-            return "UNDERWEIGHT";
+            return getBmiCategory(2);
         } else if (bmiValue >= 18.5 && bmiValue < 25) {
-            return "NORMAL";
+            return getBmiCategory(3);
         } else if (bmiValue >= 25 && bmiValue < 30) {
-            return "OVERWEIGHT";
+            return getBmiCategory(4);
         } else if (bmiValue >= 30 && bmiValue < 35) {
-            return "MODERATELY OBESE";
+            return getBmiCategory(5);
         } else if (bmiValue >= 35 && bmiValue < 40) {
-            return "SEVERELY OBESE";
+            return getBmiCategory(6);
         } else {
-            return "VERY SEVERELY OBESE";
+            return getBmiCategory(7);
         }
     }
 
