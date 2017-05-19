@@ -1,0 +1,17 @@
+<object-stream>
+  <controllers.GymApi>
+    <members>
+      <models.PremiumMember>
+        <email>wayne@manutd.com</email>
+        <name>Wayne Rooney</name>
+        <address>Liverpool</address>
+        <gender>M</gender>
+        <height>1.76</height>
+        <startingWeight>82.3</startingWeight>
+        <chosenPackage>Premium</chosenPackage>
+        <assessments/>
+      </models.PremiumMember>
+    </members>
+    <trainers/>
+  </controllers.GymApi>
+</object-stream>

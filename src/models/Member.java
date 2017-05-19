@@ -31,7 +31,11 @@ public abstract class Member extends Person {
         return assessments;
     }
 
-    public void setAssessments(HashMap<Date, Assessment> assessments) {
+    public Assessment getAssessment (Date date) {
+        return getAssessments().get(date);
+    }
+
+    public void setAssessments(HashMap assessments) {
         this.assessments = assessments;
     }
 
@@ -87,34 +91,10 @@ public abstract class Member extends Person {
         StringBuilder weightProgress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
             weightProgress.append(date).append(" - ")
-                    .append(getAssessments().get(date).getWeight()).append("\n");
+                    .append(getAssessment(date).getWeight()).append("\n");
         }
         return weightProgress.toString();
     }
-
-    public interface Command
-    {
-        public void execute(Object data);
-    }
-
-    public class PrintCommand implements Command
-    {
-        public void execute(Object data)
-        {
-            System.out.println(data.toString());
-        }
-    }
-
-    public  void callCommand(Command command, Object data)
-    {
-        command.execute(data);
-    }
-
-    public  void main(String... args)
-    {
-        callCommand(new PrintCommand(), "hello world");
-    }
-
 
     public abstract void chosenPackage(String chosenPackage);
 

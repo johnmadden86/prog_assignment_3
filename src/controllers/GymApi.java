@@ -57,13 +57,11 @@ public class GymApi {
     }
 
     public Member searchMembersByEmail(String emailEntered){
-        Member searchResult = null;
-        for (Member member : members) {
-            if(member.getEmail().equals(emailEntered)) {
-                searchResult = member;
-            }
-        }
-        return searchResult;
+        return (Member) searchPersonsByEmail(emailEntered);
+    }
+
+    public Trainer searchTrainersByEmail(String emailEntered){
+        return (Trainer) searchPersonsByEmail(emailEntered);
     }
 
     public String searchMembersByName(String nameEntered){
@@ -98,7 +96,7 @@ public class GymApi {
         }
     }
 
-    public Person searchTrainersByEmail(String emailEntered){
+    public Person searchPersonsByEmail(String emailEntered){
         Person searchResult = null;
         for (Person person : getPersons()) {
             if(person.getEmail().equals(emailEntered)) {
