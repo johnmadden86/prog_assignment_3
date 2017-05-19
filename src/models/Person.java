@@ -1,31 +1,22 @@
 package models;
 
-/**
- * Created by John on 24/04/2017.
- */
+import org.jetbrains.annotations.Contract;
+
 public abstract class Person {
     private String email;
     private String name;
     private String address;
     private String gender;
 
-    public Person(String email, String name, String address, String gender) {
+    Person(String email, String name, String address, String gender) {
         this.email = email;
 
-        if (name.length() > 30) {//limit string length to 30 characters
-            this.name = name.substring(0, 30);
-        } else {
-            this.name = name;
-        }
 
+        setName(name);
         this.address = address;
+        setGender(gender);
 
-        gender = gender.toUpperCase();
-        if (gender.equals("M") || gender.equals("F")){
-            this.gender = gender;
-        } else {//default to unspecified if other entry made
-            this.gender = "Unspecified";
-        }
+
     }
 
     public String getEmail() {
@@ -41,10 +32,15 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length() > 30) {//limit string length to 30 characters
+            this.name = name.substring(0, 30);
+        } else {
+            this.name = name;
+        }
     }
 
-    public String getAddress() {
+    @Contract(pure = true)
+    private String getAddress() {
         return address;
     }
 
@@ -57,14 +53,19 @@ public abstract class Person {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        gender = gender.toUpperCase();
+        if (gender.equals("M") || gender.equals("F")){
+            this.gender = gender;
+        } else {//default to unspecified if other entry made
+            this.gender = "Unspecified";
+        }
     }
 
     @Override
     public String toString() {
-        return "Name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                "email='" + email + '\'' +
-                ", gender='" + gender + '\'';
+        return "Name: " + getName() +
+                "\naddress: " + getAddress() +
+                "\nemail: " + getEmail() +
+                "\ngender: " + getGender();
     }
 }

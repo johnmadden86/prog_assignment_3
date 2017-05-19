@@ -6,23 +6,21 @@ import models.Trainer;
 import static utils.Analytics.*;
 import java.util.ArrayList;
 
-/**
- * Created by John on 02/05/2017.
- */
+
 public class GymApi {
     private ArrayList<Member> members;
     private ArrayList<Trainer> trainers;
 
-    public GymApi() {
+    GymApi() {
         members = new ArrayList<>();
         trainers = new ArrayList<>();
     }
 
-    public void addMember(Member member) {
+    void addMember(Member member) {
         members.add(member);
     }
 
-    public ArrayList<Member> getMembers() {
+    ArrayList<Member> getMembers() {
         return members;
     }
 
@@ -30,7 +28,7 @@ public class GymApi {
         return members.size();
     }
 
-    public void addTrainer(Trainer trainer) {
+    void addTrainer(Trainer trainer) {
         trainers.add(trainer);
     }
 
@@ -42,7 +40,7 @@ public class GymApi {
         return trainers.size();
     }
 
-    public ArrayList<Person> getPersons() {
+    private ArrayList<Person> getPersons() {
         ArrayList<Person> persons = new ArrayList<>(members);
         persons.addAll(trainers);
         return persons;
@@ -56,7 +54,7 @@ public class GymApi {
         return false;
     }
 
-    public Member searchMembersByEmail(String emailEntered){
+    Member searchMembersByEmail(String emailEntered){
         return (Member) searchPersonsByEmail(emailEntered);
     }
 
@@ -64,7 +62,7 @@ public class GymApi {
         return (Trainer) searchPersonsByEmail(emailEntered);
     }
 
-    public String searchMembersByName(String nameEntered){
+    String searchMembersByName(String nameEntered){
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < members.size(); index++) {
             if(members.get(index).getName().contains(nameEntered)) {
@@ -78,7 +76,7 @@ public class GymApi {
         }
     }
 
-    public String listMembersWithIdealWeight() {
+    String listMembersWithIdealWeight() {
         if(members.isEmpty()) {
             return "No members";
         } else {
@@ -96,7 +94,7 @@ public class GymApi {
         }
     }
 
-    public Person searchPersonsByEmail(String emailEntered){
+    Person searchPersonsByEmail(String emailEntered){
         Person searchResult = null;
         for (Person person : getPersons()) {
             if(person.getEmail().equals(emailEntered)) {
@@ -106,7 +104,7 @@ public class GymApi {
         return searchResult;
     }
 
-    public String listMembers() {
+    String listMembers() {
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < members.size(); index++) {
             list.append(index).append(" - ").append(members.get(index).getName()).append("\n");
@@ -118,22 +116,23 @@ public class GymApi {
         }
     }
 
-    public String listMembersBySpecificBMICategory(String category) {
+    String listMembersBySpecificBMICategory(String category) {
         if(members.isEmpty()) {
             return "No members";
         } else {
             StringBuilder list = new StringBuilder();
             for (Member member : members) {
-                if(determineBMICategory(calculateBMI(member)).equals(category)) {
+                if(determineBMICategory(calculateBMI(member)).toUpperCase().contains(category.toUpperCase())) {
                     list.append(member.getName()).append("\n");
                 }
             }
             if (list.toString().equals("")) {
-                return "No members with an ideal body weight";
+                return "No members with BMI in the category " + category.toLowerCase();
             } else {
                 return list.toString();
             }
-        }    }
+        }
+    }
 
     public String listMemberDetailsImperialAndMetric() {
         return null;

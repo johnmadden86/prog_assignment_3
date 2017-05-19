@@ -6,22 +6,15 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.SortedSet;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import org.jetbrains.annotations.NotNull;
 
 import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
 import static utils.Analytics.*;
 import static utils.ScannerInput.*;
 
-/**
- * Created by John on 24/04/2017.
- */
 class MenuController {
-
     private GymApi gymApi;
 
     /**
@@ -37,6 +30,7 @@ class MenuController {
      */
     private MenuController() {
         gymApi = new GymApi();
+
         try {
             load();
         } catch (Exception e) {
@@ -83,7 +77,7 @@ class MenuController {
     }
 
     private void registration(boolean addingByTrainer) {
-        String mOrT = "";
+        String mOrT;
         if (!addingByTrainer) {
         System.out.println("\n  Select an option");
         System.out.println("-----------");
@@ -109,10 +103,10 @@ class MenuController {
                     trainerWelcomePage(trainer);
                     break;
                 case "M":
-                    Member member = null;
-                    double height = validNextDouble("Enter height: ");
-                    double startingWeight = validNextDouble("Enter starting weight: ");
-                    String packageChoice = validNextString("Enter package choice: ");
+                    Member member;
+                    double height = validNextDouble("Enter height (m): ");
+                    double startingWeight = validNextDouble("Enter starting weight (kg): ");
+                    String packageChoice = validNextString("Enter package choice (Premium/Student/Basic): ");
                     switch (packageChoice) {
                         case "Premium":
                             member = new PremiumMember(email, name, address, gender, height, startingWeight, packageChoice);
@@ -125,8 +119,8 @@ class MenuController {
                             gymApi.addMember(member);
                             break;
                         default:
-                        member = new BasicMember(email, name, address, gender, height, startingWeight, packageChoice);
-                        gymApi.addMember(member);
+                            member = new BasicMember(email, name, address, gender, height, startingWeight, packageChoice);
+                            gymApi.addMember(member);
                         break;
                     }
                     memberWelcomePage(member);
@@ -188,8 +182,8 @@ class MenuController {
                 break;
             case 6:
                 listBmiCategories();
-                int index = validNextInt("\nEnter a BMI category: ");
-                System.out.println(gymApi.listMembersBySpecificBMICategory(getBmiCategory(index)));
+                String category = validNextString("Enter a BMI category: ");
+                System.out.println(gymApi.listMembersBySpecificBMICategory(category));
                 break;
             case 7:
                 assessmentSubMenu(trainer);
@@ -223,7 +217,7 @@ class MenuController {
             case 1:
                 String mailSearch = validNextString("Enter email address: ");
                 Member member = gymApi.searchMembersByEmail(mailSearch);
-                Date date = readValidDate("Date of assessment: ");
+                Date date = readValidDate("Date of assessment (dd/mm/yyyy): ");
                 double weight = validNextDouble("Weight: ");
                 double chest = validNextDouble("Chest: ");
                 double thigh = validNextDouble("Thigh: ");
@@ -238,7 +232,7 @@ class MenuController {
                 String emailSearch = validNextString("Enter email address: ");
                 Member memberToUpdate = gymApi.searchMembersByEmail(emailSearch);
                 System.out.println(memberToUpdate.sortedAssessmentDates());
-                Date dateToUpdate = readValidDate("Enter date of assessment to update: ");
+                Date dateToUpdate = readValidDate("Enter date of assessment to update (dd/mm/yyyy): ");
                 String newComment = validNextString("Enter new comment: ");
                 memberToUpdate.getAssessments().get(dateToUpdate).setComment(newComment);
                 break;
@@ -247,9 +241,9 @@ class MenuController {
                 break;
             default:
                 System.out.println("Invalid option entered: " + option);
-                pause();
                 break;
         }
+        pause();
         assessmentSubMenu(trainer);
     }
 
@@ -267,24 +261,33 @@ class MenuController {
         switch (option) {
             case 1:
                 String mailSearch = validNextString("Enter email address: ");
-                System.out.println(specificMemberProgress(gymApi.searchMembersByEmail(mailSearch)));
+                Member member = gymApi.searchMembersByEmail(mailSearch);
+                if (member != null) {
+                    System.out.println(member.specificMemberProgress());
+                } else {
+                    System.out.println("No member with this email");
+                }
                 break;
             case 2:
                 String nameSearch = validNextString("Enter name: ");
                 System.out.println(gymApi.searchMembersByName(nameSearch));
-                int index = validNextInt("Enter index: ");
-                specificMemberProgress(gymApi.getMembers().get(index));
+                if (!gymApi.searchMembersByName(nameSearch).equals("No members")) {
+                    int index = validNextInt("Enter index: ");
+                    Member member1 = gymApi.getMembers().get(index);
+                    System.out.println(member1.specificMemberProgress());
+                }
                 break;
             case 3:
+                //insert method!!!
                 break;
             case 0:
                 trainerWelcomePage(trainer);
                 break;
             default:
                 System.out.println("Invalid option entered: " + option);
-                pause();
                 break;
         }
+        pause();
         reportsSubMenu(trainer);
     }
 
@@ -307,7 +310,7 @@ class MenuController {
                 updateMember(member);
                 break;
             case 3:
-                specificMemberProgress(member);
+                progressSubMenu(member);
                 break;
             case 0:
                 System.out.println("Logging out...");
@@ -323,8 +326,8 @@ class MenuController {
 
     private void viewMemberProfile(Member member) {
         System.out.println(member.toString());
+        pause();
     }
-
 
     private void updateMember(Member member) {
         viewMemberProfile(member);
@@ -336,6 +339,7 @@ class MenuController {
         System.out.println("  4) Update gender");
         System.out.println("  5) Update height");
         System.out.println("  6) Update startingWeight");
+        System.out.println("  7) Update package choice");
         System.out.println("-----------");
         System.out.println("  0) Back to previous menu");
         int option = validNextInt("=>>");
@@ -354,10 +358,13 @@ class MenuController {
                 member.setGender(validNextString("Enter gender (M/F): "));
                 break;
             case 5:
-                member.setStartingWeight(validNextDouble("Enter starting weight: "));
+                member.setHeight(validNextDouble("Enter height (m): "));
                 break;
             case 6:
-                member.setChosenPackage(validNextString("Enter package choice: "));
+                member.setStartingWeight(validNextDouble("Enter starting weight (kg): "));
+                break;
+            case 7:
+                member.setChosenPackage(validNextString("Enter package choice (Premium/Student/Basic): "));
                 break;
             case 0:
                 memberWelcomePage(member);
@@ -385,30 +392,30 @@ class MenuController {
 
         switch (option) {
             case 1:
-                System.out.println(member.getProgress());
+                System.out.println(member.getWeightProgress());
                 break;
             case 2:
-                System.out.println(member.getProgress());
+                System.out.println(member.getChestProgress());
                 break;
             case 3:
-                System.out.println(member.getProgress());
+                System.out.println(member.getThighProgress());
                 break;
             case 4:
-                System.out.println(member.getProgress());
+                System.out.println(member.getUpperArmProgress());
                 break;
             case 5:
-                System.out.println(member.getProgress());
+                System.out.println(member.getWaistProgress());
                 break;
             case 6:
-                System.out.println(member.getProgress());
+                System.out.println(member.getHipsProgress());
                 break;
             case 0:
                 memberWelcomePage(member);
             default:
                 System.out.println("Invalid option entered: " + option);
-                pause();
                 break;
         }
+        pause();
         progressSubMenu(member);
     }
 
@@ -416,31 +423,18 @@ class MenuController {
         validNextString("Press any key to continue...\n");
     }
 
-    private void save() throws Exception
-    {
+    private void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("gymapp.xml"));
         out.writeObject(gymApi);
         out.close();
     }
 
-    private void load() throws Exception
-    {
+    private void load() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectInputStream is = xstream.createObjectInputStream(new FileReader("gymapp.xml"));
         gymApi = (GymApi) is.readObject();
         is.close();
     }
-
-    @NotNull
-    private String specificMemberProgress (Member member) {
-        StringBuilder details = new StringBuilder();
-        SortedSet<Date> dates = member.sortedAssessmentDates();
-        for (Date date : dates) {
-            details.append(member.getAssessments().get(date)).append("\n");
-        }
-        return details.toString();
-    }
-
 }
 

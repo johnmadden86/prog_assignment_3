@@ -1,15 +1,13 @@
 package models;
 
-/**
- * Created by John on 24/04/2017.
- */
+
 public class BasicMember extends Member{
 
     public BasicMember(String email, String name, String address, String gender,
                        double height, double startingWeight, String chosenPackage){
 
         super(email, name, address, gender, height, startingWeight, chosenPackage);
-        this.chosenPackage("Basic");
+        this.chosenPackage();
     }
 
     @Override
@@ -17,8 +15,8 @@ public class BasicMember extends Member{
         return super.toString();
     }
 
-    public void chosenPackage(String packageChoice){
-        chosenPackage = packageChoice;
+    private void chosenPackage(){
+        chosenPackage = "Basic";
     }
 
 

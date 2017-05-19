@@ -1,12 +1,13 @@
 package models;
 
+import java.util.Date;
+
 /**
  * Created by John on 24/04/2017.
  */
 public class Assessment {
     private double weight, chest, thigh, upperArm, waist, hips;
     private String comment;
-
     private Trainer trainer;
 
     public Assessment(double weight, double chest, double thigh, double upperArm,
@@ -84,15 +85,12 @@ public class Assessment {
         this.comment = comment;
     }
 
-    @Override
     public String toString() {
-        return "AssessmentTest{" +
-                "weight=" + weight +
-                ", chest=" + chest +
-                ", thigh=" + thigh +
-                ", upperArm=" + upperArm +
-                ", waist=" + waist +
-                ", trainer=" + trainer +
-                '}';
+        return  "\tWeight: " + getWeight() +
+                "\tChest: " + getChest() +
+                "\tThigh: " + getThigh() +
+                "\tUpper Arm: " + getUpperArm() +
+                "\tWaist: " + getWaist() +
+                "\tTrainer: " + trainer.getName();
     }
 }

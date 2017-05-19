@@ -1,20 +1,18 @@
 package models;
 
-import java.lang.reflect.Method;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.*;
-import java.util.concurrent.Callable;
 
-
-/**
- * Created by John on 24/04/2017.
- */
 public abstract class Member extends Person {
     private double height, startingWeight;
-    public String chosenPackage;
+    String chosenPackage;
     private HashMap<Date,Assessment> assessments;
 
-    public Member(String email, String name, String address, String gender,
-                  double height, double startingWeight, String chosenPackage) {
+    Member(String email, String name, String address, String gender,
+           double height, double startingWeight, String chosenPackage) {
 
         super(email, name, address, gender);
         this.height = height;
@@ -31,12 +29,8 @@ public abstract class Member extends Person {
         return assessments;
     }
 
-    public Assessment getAssessment (Date date) {
+    private Assessment getAssessment (Date date) {
         return getAssessments().get(date);
-    }
-
-    public void setAssessments(HashMap assessments) {
-        this.assessments = assessments;
     }
 
     public double getHeight() {
@@ -47,7 +41,8 @@ public abstract class Member extends Person {
         this.height = height;
     }
 
-    public double getStartingWeight() {
+    @Contract(pure = true)
+    private double getStartingWeight() {
         return startingWeight;
     }
 
@@ -63,7 +58,8 @@ public abstract class Member extends Person {
         return weight;
     }
 
-    public String getChosenPackage() {
+    @Contract(pure = true)
+    private String getChosenPackage() {
         return chosenPackage;
     }
 
@@ -74,29 +70,91 @@ public abstract class Member extends Person {
     @Override
     public String toString() {
         return super.toString() +
-                "height=" + height +
-                ", startingWeight=" + startingWeight +
-                ", chosenPackage='" + chosenPackage + '\'';
+                "\nHeight: " + getHeight() +
+                "\nStarting Weight: " + getStartingWeight() +
+                "\nChosen Package: " + getChosenPackage();
     }
 
-    public Assessment latestAssessment() {
-        return assessments.get(sortedAssessmentDates().last());
+    @Nullable
+    private Assessment latestAssessment() {
+        if (assessments.isEmpty()) {
+            return null;
+        } else {
+            return assessments.get(sortedAssessmentDates().last());
+        }
     }
 
     public SortedSet<Date> sortedAssessmentDates() {
-        return new TreeSet<>(assessments.keySet());
+        TreeSet sortedDates = new TreeSet<>(Collections.reverseOrder());
+        sortedDates.addAll(assessments.keySet());
+        return sortedDates;
     }
 
-    public String getProgress () {
-        StringBuilder weightProgress = new StringBuilder();
+    public String getWeightProgress () {
+        StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            weightProgress.append(date).append(" - ")
+            progress.append(date).append(" - ")
                     .append(getAssessment(date).getWeight()).append("\n");
         }
-        return weightProgress.toString();
+        return progress.toString();
     }
 
-    public abstract void chosenPackage(String chosenPackage);
+    public String getChestProgress () {
+        StringBuilder progress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            progress.append(date).append(" - ")
+                    .append(getAssessment(date).getChest()).append("\n");
+        }
+        return progress.toString();
+    }
+
+    public String getThighProgress () {
+        StringBuilder progress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            progress.append(date).append(" - ")
+                    .append(getAssessment(date).getThigh()).append("\n");
+        }
+        return progress.toString();
+    }
+
+    public String getUpperArmProgress () {
+        StringBuilder progress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            progress.append(date).append(" - ")
+                    .append(getAssessment(date).getUpperArm()).append("\n");
+        }
+        return progress.toString();
+    }
+
+    public String getWaistProgress () {
+        StringBuilder progress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            progress.append(date).append(" - ")
+                    .append(getAssessment(date).getWaist()).append("\n");
+        }
+        return progress.toString();
+    }
+
+    public String getHipsProgress () {
+        StringBuilder progress = new StringBuilder();
+        for (Date date: sortedAssessmentDates()) {
+            progress.append(date).append(" - ")
+                    .append(getAssessment(date).getHips()).append("\n");
+        }
+        return progress.toString();
+    }
+
+    @NotNull
+    public String specificMemberProgress() {
+        StringBuilder details = new StringBuilder();
+        for (Date date : sortedAssessmentDates()) {
+            details.append(date).append(" - ")
+                    .append(getAssessment(date).toString()).append("\n");
+        }
+        return details.toString();
+    }
+
+    //public abstract void chosenPackage(String chosenPackage);
 
 
 }

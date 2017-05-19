@@ -11,7 +11,76 @@
         <chosenPackage>Premium</chosenPackage>
         <assessments/>
       </models.PremiumMember>
+      <models.BasicMember>
+        <email>paul@manutd.fr</email>
+        <name>Paul Pogba</name>
+        <address>France</address>
+        <gender>M</gender>
+        <height>1.91</height>
+        <startingWeight>90.0</startingWeight>
+        <chosenPackage>Basic</chosenPackage>
+        <assessments>
+          <entry>
+            <date>2017-02-14 00:00:00.0 UTC</date>
+            <models.Assessment>
+              <weight>89.0</weight>
+              <chest>56.0</chest>
+              <thigh>656.0</thigh>
+              <upperArm>56.0</upperArm>
+              <waist>56.0</waist>
+              <hips>0.0</hips>
+              <comment>great</comment>
+              <trainer>
+                <email>jose@manutd.pt</email>
+                <name>Jose Mourinho</name>
+                <address>Portugal</address>
+                <gender>M</gender>
+              </trainer>
+            </models.Assessment>
+          </entry>
+          <entry>
+            <date>2017-05-11 23:00:00.0 UTC</date>
+            <models.Assessment>
+              <weight>92.0</weight>
+              <chest>45.0</chest>
+              <thigh>56.0</thigh>
+              <upperArm>45.0</upperArm>
+              <waist>23.0</waist>
+              <hips>0.0</hips>
+              <comment>very good</comment>
+              <trainer reference="../../../entry/models.Assessment/trainer"/>
+            </models.Assessment>
+          </entry>
+          <entry>
+            <date>2017-01-01 00:00:00.0 UTC</date>
+            <models.Assessment>
+              <weight>87.0</weight>
+              <chest>45.2</chest>
+              <thigh>65.3</thigh>
+              <upperArm>65.0</upperArm>
+              <waist>65.0</waist>
+              <hips>0.0</hips>
+              <comment>good</comment>
+              <trainer reference="../../../entry/models.Assessment/trainer"/>
+            </models.Assessment>
+          </entry>
+        </assessments>
+      </models.BasicMember>
+      <models.StudentMember>
+        <email>david@manutd.es</email>
+        <name>David de Gea</name>
+        <address>Spain</address>
+        <gender>M</gender>
+        <height>1.95</height>
+        <startingWeight>92.5</startingWeight>
+        <chosenPackage>Student</chosenPackage>
+        <assessments/>
+        <studentId>w123456</studentId>
+        <collegeName>WIT</collegeName>
+      </models.StudentMember>
     </members>
-    <trainers/>
+    <trainers>
+      <models.Trainer reference="../../members/models.BasicMember/assessments/entry/models.Assessment/trainer"/>
+    </trainers>
   </controllers.GymApi>
 </object-stream>

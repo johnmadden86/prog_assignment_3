@@ -1,17 +1,10 @@
 package utils;
 
-import groovy.json.internal.ArrayUtils;
-import models.Assessment;
 import models.Member;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-
-import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
 
-/**
- * Created by John on 24/04/2017.
- */
 public class Analytics {
     private static ArrayList<String> bmiCategories;
 
@@ -20,7 +13,7 @@ public class Analytics {
         addCategories();
     }
 
-    private void addCategories() {
+    private static void addCategories() {
         bmiCategories.add("Very severely underweight");
         bmiCategories.add("Severely underweight");
         bmiCategories.add("Underweight");
@@ -35,13 +28,14 @@ public class Analytics {
         return bmiCategories.get(index);
     }
 
-    @NotNull
-    public static String listBmiCategories() {
+    public static void listBmiCategories() {
+        bmiCategories = new ArrayList<>();
+        addCategories();
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < bmiCategories.size(); index++) {
-            list.append(index).append(" - ").append(getBmiCategory(index)).append("\n");
+            list.append(getBmiCategory(index)).append("\n");
         }
-        return list.toString();
+        System.out.println(list.toString());
     }
 
 
@@ -125,7 +119,7 @@ public class Analytics {
      * @return  Member's height in inches truncated to two decimal places
      */
     @Contract(pure = true)
-    public static double convertHeightMetresToInches(double height) {
+    private static double convertHeightMetresToInches(double height) {
         return toTwoDecimalPlaces(height * 39.37);
     }
 }
