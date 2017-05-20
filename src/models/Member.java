@@ -6,6 +6,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+import static utils.ScannerInput.printShortDate;
+
 public abstract class Member extends Person {
     private double height, startingWeight;
     String chosenPackage;
@@ -42,7 +44,7 @@ public abstract class Member extends Person {
     }
 
     @Contract(pure = true)
-    private double getStartingWeight() {
+    double getStartingWeight() {
         return startingWeight;
     }
 
@@ -53,13 +55,14 @@ public abstract class Member extends Person {
     public double getCurrentWeight() {
         double weight = getStartingWeight();
         if (latestAssessment() != null) {
+            //noinspection ConstantConditions
             weight = latestAssessment().getWeight();
         }
         return weight;
     }
 
     @Contract(pure = true)
-    private String getChosenPackage() {
+    String getChosenPackage() {
         return chosenPackage;
     }
 
@@ -72,6 +75,7 @@ public abstract class Member extends Person {
         return super.toString() +
                 "\nHeight: " + getHeight() +
                 "\nStarting Weight: " + getStartingWeight() +
+                "\nCurrent Weight: " + getCurrentWeight() +
                 "\nChosen Package: " + getChosenPackage();
     }
 
@@ -80,20 +84,28 @@ public abstract class Member extends Person {
         if (assessments.isEmpty()) {
             return null;
         } else {
-            return assessments.get(sortedAssessmentDates().last());
+            return assessments.get(sortedAssessmentDates().first());
         }
     }
 
-    public SortedSet<Date> sortedAssessmentDates() {
+    private SortedSet<Date> sortedAssessmentDates() {
         TreeSet sortedDates = new TreeSet<>(Collections.reverseOrder());
         sortedDates.addAll(assessments.keySet());
         return sortedDates;
     }
 
+    public String listAssessmentDates() {
+        StringBuilder dates = new StringBuilder();
+        for (Date date : sortedAssessmentDates()) {
+            dates.append(printShortDate(date)).append("\n");
+        }
+        return dates.toString();
+    }
+
     public String getWeightProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getWeight()).append("\n");
         }
         return progress.toString();
@@ -102,7 +114,7 @@ public abstract class Member extends Person {
     public String getChestProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getChest()).append("\n");
         }
         return progress.toString();
@@ -111,7 +123,7 @@ public abstract class Member extends Person {
     public String getThighProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getThigh()).append("\n");
         }
         return progress.toString();
@@ -120,7 +132,7 @@ public abstract class Member extends Person {
     public String getUpperArmProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getUpperArm()).append("\n");
         }
         return progress.toString();
@@ -129,7 +141,7 @@ public abstract class Member extends Person {
     public String getWaistProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getWaist()).append("\n");
         }
         return progress.toString();
@@ -138,7 +150,7 @@ public abstract class Member extends Person {
     public String getHipsProgress () {
         StringBuilder progress = new StringBuilder();
         for (Date date: sortedAssessmentDates()) {
-            progress.append(date).append(" - ")
+            progress.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).getHips()).append("\n");
         }
         return progress.toString();
@@ -148,7 +160,7 @@ public abstract class Member extends Person {
     public String specificMemberProgress() {
         StringBuilder details = new StringBuilder();
         for (Date date : sortedAssessmentDates()) {
-            details.append(date).append(" - ")
+            details.append(printShortDate(date)).append(" - ")
                     .append(getAssessment(date).toString()).append("\n");
         }
         return details.toString();

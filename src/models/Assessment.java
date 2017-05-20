@@ -86,11 +86,12 @@ public class Assessment {
     }
 
     public String toString() {
-        return  "\tWeight: " + getWeight() +
-                "\tChest: " + getChest() +
-                "\tThigh: " + getThigh() +
-                "\tUpper Arm: " + getUpperArm() +
-                "\tWaist: " + getWaist() +
-                "\tTrainer: " + trainer.getName();
+        return  "Weight: " + getWeight() +
+                "  Chest: " + getChest() +
+                "  Thigh: " + getThigh() +
+                "  Upper Arm: " + getUpperArm() +
+                "  Waist: " + getWaist() +
+                "  Comment: " + getComment() +
+                "  Trainer: " + trainer.getName();
     }
 }

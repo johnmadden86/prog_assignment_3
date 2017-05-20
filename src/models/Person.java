@@ -3,20 +3,13 @@ package models;
 import org.jetbrains.annotations.Contract;
 
 public abstract class Person {
-    private String email;
-    private String name;
-    private String address;
-    private String gender;
+    private String email, name, address, gender;
 
     Person(String email, String name, String address, String gender) {
-        this.email = email;
-
-
+        setEmail(email);
         setName(name);
-        this.address = address;
+        setAddress(address);
         setGender(gender);
-
-
     }
 
     public String getEmail() {

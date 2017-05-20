@@ -1,17 +1,13 @@
 package utils;
 
-import models.Assessment;
-import models.Member;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-/**
- * Created by John on 24/04/2017.
- */
+
 public class ScannerInput {
 
     public static int validNextInt(String prompt) {
@@ -20,8 +16,7 @@ public class ScannerInput {
             try {
                 System.out.print(prompt);
                 return Integer.parseInt( input.next() );
-            }
-            catch (NumberFormatException e) {//catches any non-integer input, loop will run again
+            } catch (NumberFormatException e) {//catches any non-integer input, loop will run again
                 System.err.println("\tEnter a valid number please.");
             }
         } while (true);
@@ -33,13 +28,11 @@ public class ScannerInput {
             try {
                 System.out.print(prompt);
                 return Double.parseDouble(input.next());
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.err.println("\tEnter a decimal number please.");
             }
         }  while (true);
     }
-
 
     public static Date readValidDate(String prompt) {
         Scanner input = new Scanner(System.in);
@@ -49,11 +42,17 @@ public class ScannerInput {
             try {
                 System.out.print(prompt);
                 return sdf.parse(input.nextLine());
-            }
-            catch (ParseException e) {
-                System.err.println ("\tInvalid date format; expected dd/MM/yyyy.  Try again.");
+            } catch (ParseException e) {
+                System.err.println ("\tInvalid date format; expected dd/MM/yyyy. Try again.");
             }
         } while(true);
+    }
+
+
+    @NotNull
+    public static String printShortDate (Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(date);
     }
 
     public static String validNextString(String prompt) {

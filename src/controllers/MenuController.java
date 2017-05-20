@@ -156,7 +156,7 @@ class MenuController {
         System.out.println("  4) Search for a member by name");
         System.out.println("  5) List members with ideal body weight");
         System.out.println("  6) List members with a specific BMI category");
-        System.out.println("  7) AssessmentTest sub-menu");
+        System.out.println("  7) Assessment test sub-menu");
         System.out.println("  8) Reports sub-menu");
         System.out.println("-----------");
         System.out.println("  0) Logout");
@@ -217,24 +217,32 @@ class MenuController {
             case 1:
                 String mailSearch = validNextString("Enter email address: ");
                 Member member = gymApi.searchMembersByEmail(mailSearch);
-                Date date = readValidDate("Date of assessment (dd/mm/yyyy): ");
-                double weight = validNextDouble("Weight: ");
-                double chest = validNextDouble("Chest: ");
-                double thigh = validNextDouble("Thigh: ");
-                double upperArm = validNextDouble("Upper Arm: ");
-                double waist = validNextDouble("Waist: ");
-                double hips = validNextDouble("Hips: ");
-                String comment = validNextString("Enter comment: ");
-                member.addAssessment(date,
-                        new Assessment(weight, chest, thigh, upperArm, waist, hips, trainer, comment));
+                if (member != null) {
+                    Date date = readValidDate("Date of assessment (dd/mm/yyyy): ");
+                    double weight = validNextDouble("Weight: ");
+                    double chest = validNextDouble("Chest: ");
+                    double thigh = validNextDouble("Thigh: ");
+                    double upperArm = validNextDouble("Upper Arm: ");
+                    double waist = validNextDouble("Waist: ");
+                    double hips = validNextDouble("Hips: ");
+                    String comment = validNextString("Enter comment: ");
+                    member.addAssessment(date,
+                            new Assessment(weight, chest, thigh, upperArm, waist, hips, trainer, comment));
+                } else {
+                    System.out.println("No member with this email");
+                }
                 break;
             case 2:
                 String emailSearch = validNextString("Enter email address: ");
                 Member memberToUpdate = gymApi.searchMembersByEmail(emailSearch);
-                System.out.println(memberToUpdate.sortedAssessmentDates());
-                Date dateToUpdate = readValidDate("Enter date of assessment to update (dd/mm/yyyy): ");
-                String newComment = validNextString("Enter new comment: ");
-                memberToUpdate.getAssessments().get(dateToUpdate).setComment(newComment);
+                if (memberToUpdate != null) {
+                    System.out.println(memberToUpdate.listAssessmentDates());
+                    Date dateToUpdate = readValidDate("Enter date of assessment to update (dd/mm/yyyy): ");
+                    String newComment = validNextString("Enter new comment: ");
+                    memberToUpdate.getAssessments().get(dateToUpdate).setComment(newComment);
+                } else {
+                    System.out.println("No member with this email");
+                }
                 break;
             case 0:
                 trainerWelcomePage(trainer);

@@ -1,8 +1,5 @@
 package models;
 
-/**
- * Created by John on 24/04/2017.
- */
 public class Trainer extends Person{
     private String speciality;
 
