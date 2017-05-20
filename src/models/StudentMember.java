@@ -14,6 +14,7 @@ public class StudentMember extends Member{
         super(email, name, address, gender, height, startingWeight, chosenPackage);
         this.studentId = studentId;
         this.collegeName = collegeName;
+        chosenPackage(chosenPackage);
     }
 
     public String getStudentId() {
@@ -33,7 +34,7 @@ public class StudentMember extends Member{
     }
 
     public void chosenPackage(String packageChoice){
-        chosenPackage = packageChoice;
+        setChosenPackage(packageChoice);
         //default package 3
         //parameter to package assoc with college
     }

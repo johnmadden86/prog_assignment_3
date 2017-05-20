@@ -7,6 +7,7 @@ public class PremiumMember extends Member{
                          double height, double startingWeight, String chosenPackage){
 
         super(email, name, address, gender, height, startingWeight, chosenPackage);
+        chosenPackage(chosenPackage);
     }
 
     @Override
@@ -15,7 +16,8 @@ public class PremiumMember extends Member{
     }
 
     public void chosenPackage(String packageChoice){
-        chosenPackage = packageChoice;
+        setChosenPackage(packageChoice);
     }
+
 
 }

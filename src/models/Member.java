@@ -10,16 +10,16 @@ import static utils.ScannerInput.printShortDate;
 
 public abstract class Member extends Person {
     private double height, startingWeight;
-    String chosenPackage;
+    private String chosenPackage;
     private HashMap<Date,Assessment> assessments;
 
     Member(String email, String name, String address, String gender,
            double height, double startingWeight, String chosenPackage) {
 
         super(email, name, address, gender);
-        this.height = height;
-        this.startingWeight = startingWeight;
-        this.chosenPackage = chosenPackage;
+        setHeight(height);
+        setStartingWeight(startingWeight);
+        setChosenPackage(chosenPackage);
         assessments = new HashMap<>();
     }
 
@@ -44,7 +44,7 @@ public abstract class Member extends Person {
     }
 
     @Contract(pure = true)
-    double getStartingWeight() {
+    private double getStartingWeight() {
         return startingWeight;
     }
 
@@ -62,13 +62,15 @@ public abstract class Member extends Person {
     }
 
     @Contract(pure = true)
-    String getChosenPackage() {
+    private String getChosenPackage() {
         return chosenPackage;
     }
 
     public void setChosenPackage(String chosenPackage) {
         this.chosenPackage = chosenPackage;
     }
+
+    public abstract void chosenPackage(String chosenPackage);
 
     @Override
     public String toString() {

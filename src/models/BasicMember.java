@@ -7,17 +7,11 @@ public class BasicMember extends Member{
                        double height, double startingWeight, String chosenPackage){
 
         super(email, name, address, gender, height, startingWeight, chosenPackage);
-        this.chosenPackage();
+        chosenPackage(chosenPackage);
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public void chosenPackage(String chosenPackage) {
+        setChosenPackage(chosenPackage);
     }
-
-    private void chosenPackage(){
-        chosenPackage = "Basic";
-    }
-
-
 }
