@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class to test the methods associated with the premium member class
+ */
 class PremiumMemberTest {
     private PremiumMember premiumMember;
     @BeforeEach

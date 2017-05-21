@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.Utilities.parseDate;
 import static utils.Utilities.printShortDate;
 
+/**
+ * Class to test the methods associated with the utilities class
+ */
 @SuppressWarnings("deprecation")
 class UtilitiesTest{
     private Date date;

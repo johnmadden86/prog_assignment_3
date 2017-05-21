@@ -6,15 +6,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+/**
+ * class to perform calculations
+ */
 public class Analytics {
     static ArrayList<String> bmiCategories;
 
+    /**
+     * creates an array list of bmi categories
+     */
     public static void setupBmiCategories() {
         bmiCategories = new ArrayList<>();
-        addCategories();
-    }
-
-    private static void addCategories() {
         bmiCategories.add("Very severely underweight");
         bmiCategories.add("Severely underweight");
         bmiCategories.add("Underweight");
@@ -25,10 +27,19 @@ public class Analytics {
         bmiCategories.add("Very severely obese");
     }
 
+    /**
+     * gets a specific bmi category
+     * @param index index of bmi category to return
+     * @return bmi category of index selected
+     */
     static String getBmiCategory(int index) {
         return bmiCategories.get(index);
     }
 
+    /**
+     * lists all bmi categories
+     * @return bmi categories as a string
+     */
     @NotNull
     public static String listBmiCategories() {
         setupBmiCategories();
@@ -121,6 +132,10 @@ public class Analytics {
         return toTwoDecimalPlaces(height * 39.37);
     }
 
+    /**
+     * Converts a member's weight from kg to lbs, 1kg = 2.2 lbs
+     * @return  Member's weight in pounds truncated to two decimal places
+     */
     @Contract(pure = true)
     public static double convertWeightKilogramsToPounds(double weight) {
         return toTwoDecimalPlaces((double) weight * 2.20);

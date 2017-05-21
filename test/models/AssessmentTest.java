@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Class to test the methods associated with the assessment class
+ */
 class AssessmentTest {
     private Assessment assessment;
     private Trainer trainer;

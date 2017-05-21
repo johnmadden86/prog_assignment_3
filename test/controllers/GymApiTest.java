@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Analytics.setupBmiCategories;
 
+/**
+ * Class to test the methods associated with the gymapi class
+ */
 class GymApiTest {
     private GymApi gymApi;
     private ArrayList<Member> members;

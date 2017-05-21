@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Analytics.*;
 
+/**
+ * Class to test the methods associated with the analytics class
+ */
 class AnalyticsTest {
     private PremiumMember member;
 

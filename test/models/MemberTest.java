@@ -9,6 +9,9 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Utilities.parseDate;
 
+/**
+ * Class to test the methods associated with the member class
+ */
 class MemberTest {
     private PremiumMember premiumMember;
     private Assessment assessment1, assessment2, assessment3;

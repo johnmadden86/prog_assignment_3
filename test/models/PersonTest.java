@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class to test the methods associated with the person class
+ */
 class PersonTest {
     private PremiumMember premiumMember;
 

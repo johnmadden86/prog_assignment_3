@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.ScannerInput.*;
 import static utils.Utilities.parseDate;
 
+/**
+ * Class to test the methods associated with the scanner input class
+ */
 class ScannerInputTest {
     @Test
 
