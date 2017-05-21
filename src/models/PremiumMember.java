@@ -9,7 +9,7 @@ public class PremiumMember extends Member{
         chosenPackage(chosenPackage);
     }
 
-    public void chosenPackage(String packageChoice){
+    private void chosenPackage(String packageChoice){
         setChosenPackage(packageChoice);
     }
 }

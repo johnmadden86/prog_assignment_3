@@ -8,7 +8,7 @@ import static utils.Utilities.printShortDate;
 public abstract class Member extends Person {
     private double height, startingWeight;
     private String chosenPackage;
-    private HashMap<Date,Assessment> assessments;
+    private final HashMap<Date,Assessment> assessments;
 
     Member(String email, String name, String address, String gender,
            double height, double startingWeight, String chosenPackage) {
@@ -74,8 +74,6 @@ public abstract class Member extends Person {
     public void setChosenPackage(String chosenPackage) {
         this.chosenPackage = chosenPackage;
     }
-
-    public abstract void chosenPackage(String chosenPackage);
 
     public String toString() {
         return super.toString() +

@@ -5,12 +5,10 @@ import models.Person;
 import models.Trainer;
 import static utils.Analytics.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-
-public class GymApi {
-    private ArrayList<Member> members;
-    private ArrayList<Trainer> trainers;
+class GymApi {
+    private final ArrayList<Member> members;
+    private final ArrayList<Trainer> trainers;
 
     GymApi() {
         members = new ArrayList<>();
@@ -66,28 +64,6 @@ public class GymApi {
             return list.toString();
         }
     }
-
-    /*private HashMap<Integer, Member> membersByName(String searchTerm) {
-        int index = 1;
-        HashMap<Integer, Member> indexedList = new HashMap<>();
-        for (Member member : getMembers()) {
-            if (member.getName().contains(searchTerm)) {
-                indexedList.put(index, member);
-                index++;
-            }
-        }
-        return indexedList;
-    }
-
-    public String membersByNameToString (String searchTerm) {
-        HashMap<Integer, Member> indexedList = membersByName(searchTerm);
-        StringBuilder list = new StringBuilder();
-        for (int i = 1; i < indexedList.keySet().size(); i++) {
-            Member member = indexedList.get(i);
-            list.append(i).append(" - ").append(member.getName()).append("\n");
-        }
-        return list.toString();
-    }*/
 
     String listMembersWithIdealWeight() {
         if(members.isEmpty()) {

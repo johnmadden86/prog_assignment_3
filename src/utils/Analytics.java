@@ -1,20 +1,20 @@
 package utils;
 
 import models.Member;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class Analytics {
-    public static ArrayList<String> bmiCategories;
-
-    public Analytics() {
-    }
+    static ArrayList<String> bmiCategories;
 
     public static void setupBmiCategories() {
         bmiCategories = new ArrayList<>();
         addCategories();
     }
 
-    public static void addCategories() {
+    private static void addCategories() {
         bmiCategories.add("Very severely underweight");
         bmiCategories.add("Severely underweight");
         bmiCategories.add("Underweight");
@@ -29,6 +29,7 @@ public class Analytics {
         return bmiCategories.get(index);
     }
 
+    @NotNull
     public static String listBmiCategories() {
         setupBmiCategories();
         StringBuilder list = new StringBuilder();
@@ -106,6 +107,7 @@ public class Analytics {
      * helper method to truncate numbers to two decimal places
      * @return number to two decimal places
      */
+    @Contract(pure = true)
     public static double toTwoDecimalPlaces(double num){
         return (int) (num * 100 ) / 100.0;
     }
@@ -114,11 +116,13 @@ public class Analytics {
      * Converts a member's height from metres to inches, 1m = 39.37 inches.
      * @return  Member's height in inches truncated to two decimal places
      */
-    public static double convertHeightMetresToInches(double height) {
+    @Contract(pure = true)
+    static double convertHeightMetresToInches(double height) {
         return toTwoDecimalPlaces(height * 39.37);
     }
 
-    public static double convertWeightKilogramsToPounds(double weight) {
-        return toTwoDecimalPlaces(weight * 2.20);
+    @Contract(pure = true)
+    static double convertWeightKilogramsToPounds() {
+        return toTwoDecimalPlaces((double) 1 * 2.20);
     }
 }

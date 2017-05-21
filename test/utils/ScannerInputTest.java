@@ -4,8 +4,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.ScannerInput.validNextInt;
+import static utils.ScannerInput.*;
+import static utils.Utilities.parseDate;
 
 class ScannerInputTest {
 
@@ -19,18 +23,37 @@ class ScannerInputTest {
 
     @Test
     void testValidNextInt() {
+        String userInput = "1";
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        int input = validNextInt("placeholder");
+        assertEquals(1, input);
+        assertNotEquals("1", input);
+        assertNotEquals(1.0, input);
     }
 
     @Test
-    void validNextDouble() {
+    void testValidNextDouble() {
+        String userInput = "1.1";
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        double input = validNextDouble("placeholder");
+        assertEquals(1.1, input, 0.001);
+        assertNotEquals("1.1", input);
+        assertNotEquals(1, input);
     }
 
     @Test
-    void readValidDate() {
+    void testReadValidDate() {
+        String userInput = "01/01/2017";
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        Date input = readValidDate("placeholder");
+        assertEquals(parseDate(userInput), input);
     }
 
     @Test
-    void validNextString() {
+    void testValidNextString() {
+        String userInput = "test";
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        String input = validNextString("placeholder");
+        assertEquals(userInput, input);
     }
-
 }

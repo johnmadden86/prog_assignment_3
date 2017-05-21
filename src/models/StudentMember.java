@@ -11,7 +11,7 @@ public class StudentMember extends Member{
         super(email, name, address, gender, height, startingWeight, chosenPackage);
         setStudentId(studentId);
         setCollegeName(collegeName);
-        chosenPackage(chosenPackage);
+        chosenPackage();
     }
 
     String getStudentId() {
@@ -30,7 +30,7 @@ public class StudentMember extends Member{
         this.collegeName = collegeName;
     }
 
-    public void chosenPackage(String packageChoice){
+    private void chosenPackage(){
         if (getCollegeName().toUpperCase().equals("WIT")) {
             setChosenPackage("WIT");
         }
