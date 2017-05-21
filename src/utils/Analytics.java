@@ -1,8 +1,6 @@
 package utils;
 
 import models.Member;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class Analytics {
@@ -24,7 +22,7 @@ public class Analytics {
         bmiCategories.add("Very severely obese");
     }
 
-    public static String getBmiCategory(int index) {
+    private static String getBmiCategory(int index) {
         return bmiCategories.get(index);
     }
 
@@ -60,8 +58,6 @@ public class Analytics {
      * greater than 40 "VERY SEVERELY OBESE"
      * @return  Member's BMI category
      */
-    @NotNull
-    @Contract(pure = true)
     public static String determineBMICategory(double bmiValue) {
         if (bmiValue < 15) {
             return getBmiCategory(0);
@@ -109,8 +105,7 @@ public class Analytics {
      * helper method to truncate numbers to two decimal places
      * @return number to two decimal places
      */
-    @Contract(pure = true)
-    private static double toTwoDecimalPlaces(double num){
+    public static double toTwoDecimalPlaces(double num){
         return (int) (num * 100 ) / 100.0;
     }
 
@@ -118,7 +113,6 @@ public class Analytics {
      * Converts a member's height from metres to inches, 1m = 39.37 inches.
      * @return  Member's height in inches truncated to two decimal places
      */
-    @Contract(pure = true)
     private static double convertHeightMetresToInches(double height) {
         return toTwoDecimalPlaces(height * 39.37);
     }

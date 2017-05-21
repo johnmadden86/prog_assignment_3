@@ -1,12 +1,9 @@
 package models;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.*;
 
-import static utils.ScannerInput.printShortDate;
+import static utils.Analytics.toTwoDecimalPlaces;
+import static utils.Utilities.printShortDate;
 
 public abstract class Member extends Person {
     private double height, startingWeight;
@@ -31,7 +28,7 @@ public abstract class Member extends Person {
         return assessments;
     }
 
-    private Assessment getAssessment (Date date) {
+    public Assessment getAssessment (Date date) {
         return getAssessments().get(date);
     }
 
@@ -40,16 +37,25 @@ public abstract class Member extends Person {
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        if (height < 1) {
+            height = 1;
+        } else if (height > 3) {
+            height = 3;
+        }
+        this.height = toTwoDecimalPlaces(height);
     }
 
-    @Contract(pure = true)
-    private double getStartingWeight() {
+    public double getStartingWeight() {
         return startingWeight;
     }
 
     public void setStartingWeight(double startingWeight) {
-        this.startingWeight = startingWeight;
+        if (startingWeight < 35) {
+            startingWeight = 35;
+        } else if (startingWeight > 250) {
+            startingWeight = 250;
+        }
+        this.startingWeight = toTwoDecimalPlaces(startingWeight);
     }
 
     public double getCurrentWeight() {
@@ -61,8 +67,7 @@ public abstract class Member extends Person {
         return weight;
     }
 
-    @Contract(pure = true)
-    private String getChosenPackage() {
+    public String getChosenPackage() {
         return chosenPackage;
     }
 
@@ -72,7 +77,6 @@ public abstract class Member extends Person {
 
     public abstract void chosenPackage(String chosenPackage);
 
-    @Override
     public String toString() {
         return super.toString() +
                 "\nHeight: " + getHeight() +
@@ -81,8 +85,7 @@ public abstract class Member extends Person {
                 "\nChosen Package: " + getChosenPackage();
     }
 
-    @Nullable
-    private Assessment latestAssessment() {
+    public Assessment latestAssessment() {
         if (assessments.isEmpty()) {
             return null;
         } else {
@@ -90,9 +93,9 @@ public abstract class Member extends Person {
         }
     }
 
-    private SortedSet<Date> sortedAssessmentDates() {
-        TreeSet sortedDates = new TreeSet<>(Collections.reverseOrder());
-        sortedDates.addAll(assessments.keySet());
+    SortedSet<Date> sortedAssessmentDates() {
+        SortedSet<Date> sortedDates = new TreeSet<>(Collections.reverseOrder());
+        sortedDates.addAll(getAssessments().keySet());
         return sortedDates;
     }
 
@@ -158,7 +161,6 @@ public abstract class Member extends Person {
         return progress.toString();
     }
 
-    @NotNull
     public String specificMemberProgress() {
         StringBuilder details = new StringBuilder();
         for (Date date : sortedAssessmentDates()) {
@@ -167,8 +169,5 @@ public abstract class Member extends Person {
         }
         return details.toString();
     }
-
-    //public abstract void chosenPackage(String chosenPackage);
-
 
 }

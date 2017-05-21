@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Date;
-
 /**
  * Created by John on 24/04/2017.
  */
@@ -12,13 +10,14 @@ public class Assessment {
 
     public Assessment(double weight, double chest, double thigh, double upperArm,
                       double waist, double hips, Trainer trainer, String comment) {
-        this.weight = weight;
-        this.chest = chest;
-        this.thigh = thigh;
-        this.upperArm = upperArm;
-        this.waist = waist;
-        this.trainer = trainer;
-        this.comment = comment;
+        setWeight(weight);
+        setChest(chest);
+        setThigh(thigh);
+        setUpperArm(upperArm);
+        setWaist(waist);
+        setHips(hips);
+        setTrainer(trainer);
+        setComment(comment);
     }
 
     public double getWeight() {
@@ -91,6 +90,7 @@ public class Assessment {
                 "  Thigh: " + getThigh() +
                 "  Upper Arm: " + getUpperArm() +
                 "  Waist: " + getWaist() +
+                "  Hips: " + getHips() +
                 "  Comment: " + getComment() +
                 "  Trainer: " + trainer.getName();
     }

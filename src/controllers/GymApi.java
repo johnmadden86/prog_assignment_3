@@ -5,6 +5,7 @@ import models.Person;
 import models.Trainer;
 import static utils.Analytics.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class GymApi {
@@ -14,6 +15,7 @@ public class GymApi {
     GymApi() {
         members = new ArrayList<>();
         trainers = new ArrayList<>();
+
     }
 
     void addMember(Member member) {
@@ -40,7 +42,7 @@ public class GymApi {
         return trainers.size();
     }
 
-    private ArrayList<Person> getPersons() {
+    ArrayList<Person> getPersons() {
         ArrayList<Person> persons = new ArrayList<>(members);
         persons.addAll(trainers);
         return persons;
@@ -64,9 +66,9 @@ public class GymApi {
 
     String searchMembersByName(String nameEntered){
         StringBuilder list = new StringBuilder();
-        for (int index = 0; index < members.size(); index++) {
-            if(members.get(index).getName().contains(nameEntered)) {
-                list.append(index).append(" - ").append(members.get(index).getName()).append("\n");
+        for (int index = 0; index < getMembers().size(); index++) {
+            if(getMembers().get(index).getName().contains(nameEntered)) {
+                list.append(index).append(" - ").append(getMembers().get(index).getName()).append("\n");
             }
         }
         if (list.toString().equals("")) {
@@ -75,6 +77,28 @@ public class GymApi {
             return list.toString();
         }
     }
+
+    /*private HashMap<Integer, Member> membersByName(String searchTerm) {
+        int index = 1;
+        HashMap<Integer, Member> indexedList = new HashMap<>();
+        for (Member member : getMembers()) {
+            if (member.getName().contains(searchTerm)) {
+                indexedList.put(index, member);
+                index++;
+            }
+        }
+        return indexedList;
+    }
+
+    public String membersByNameToString (String searchTerm) {
+        HashMap<Integer, Member> indexedList = membersByName(searchTerm);
+        StringBuilder list = new StringBuilder();
+        for (int i = 1; i < indexedList.keySet().size(); i++) {
+            Member member = indexedList.get(i);
+            list.append(i).append(" - ").append(member.getName()).append("\n");
+        }
+        return list.toString();
+    }*/
 
     String listMembersWithIdealWeight() {
         if(members.isEmpty()) {
@@ -137,5 +161,4 @@ public class GymApi {
     public String listMemberDetailsImperialAndMetric() {
         return null;
     }
-
 }

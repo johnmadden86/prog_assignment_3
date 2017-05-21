@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -46,13 +47,6 @@ public class ScannerInput {
                 System.err.println ("\tInvalid date format; expected dd/MM/yyyy. Try again.");
             }
         } while(true);
-    }
-
-
-    @NotNull
-    public static String printShortDate (Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return sdf.format(date);
     }
 
     public static String validNextString(String prompt) {

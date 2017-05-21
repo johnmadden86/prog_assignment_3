@@ -5,21 +5,19 @@ public class Trainer extends Person{
 
     public Trainer(String email, String name, String address, String gender, String speciality) {
         super(email, name, address, gender);
+        setSpeciality(speciality);
     }
 
-    public String getSpeciality() {
+    String getSpeciality() {
         return speciality;
     }
 
-    public void setSpeciality(String speciality) {
+    private void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
 
-    @Override
     public String toString() {
         return super.toString() +
-                "Trainer{" +
-                "speciality='" + speciality + '\'' +
-                '}';
+                "\nSpeciality: " + getSpeciality();
     }
 }

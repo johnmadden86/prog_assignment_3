@@ -1,6 +1,5 @@
 package models;
 
-import org.jetbrains.annotations.Contract;
 
 public abstract class Person {
     private String email, name, address, gender;
@@ -25,15 +24,13 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        if (name.length() > 30) {//limit string length to 30 characters
-            this.name = name.substring(0, 30);
-        } else {
-            this.name = name;
+        if (name.length() > 30) {
+            name = name.substring(0, 30);
         }
+        this.name = name;
     }
 
-    @Contract(pure = true)
-    private String getAddress() {
+    String getAddress() {
         return address;
     }
 
@@ -46,19 +43,23 @@ public abstract class Person {
     }
 
     public void setGender(String gender) {
-        gender = gender.toUpperCase();
-        if (gender.equals("M") || gender.equals("F")){
+        gender = gender.substring(0,1).toUpperCase();
+        if (gender.equals("M") || gender.equals("F")) {
             this.gender = gender;
-        } else {//default to unspecified if other entry made
-            this.gender = "Unspecified";
+        } else {
+            if (this.gender == null) {
+                gender = "Unspecified";
+            } else {
+                gender = this.gender;
+            }
+            this.gender = gender;
         }
     }
 
-    @Override
     public String toString() {
         return "Name: " + getName() +
-                "\naddress: " + getAddress() +
-                "\nemail: " + getEmail() +
-                "\ngender: " + getGender();
+                "\nAddress: " + getAddress() +
+                "\nEmail: " + getEmail() +
+                "\nGender: " + getGender();
     }
 }

@@ -1,6 +1,5 @@
 package models;
 
-
 public class PremiumMember extends Member{
 
     public PremiumMember(String email, String name, String address, String gender,
@@ -10,14 +9,7 @@ public class PremiumMember extends Member{
         chosenPackage(chosenPackage);
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public void chosenPackage(String packageChoice){
         setChosenPackage(packageChoice);
     }
-
-
 }

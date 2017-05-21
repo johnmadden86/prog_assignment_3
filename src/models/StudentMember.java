@@ -1,8 +1,5 @@
 package models;
 
-/**
- * Created by John on 24/04/2017.
- */
 public class StudentMember extends Member{
     private String studentId;
     private String collegeName;
@@ -12,12 +9,12 @@ public class StudentMember extends Member{
                          String studentId, String collegeName){
 
         super(email, name, address, gender, height, startingWeight, chosenPackage);
-        this.studentId = studentId;
-        this.collegeName = collegeName;
+        setStudentId(studentId);
+        setCollegeName(collegeName);
         chosenPackage(chosenPackage);
     }
 
-    public String getStudentId() {
+    String getStudentId() {
         return studentId;
     }
 
@@ -34,17 +31,16 @@ public class StudentMember extends Member{
     }
 
     public void chosenPackage(String packageChoice){
-        setChosenPackage(packageChoice);
-        //default package 3
-        //parameter to package assoc with college
+        if (getCollegeName().toUpperCase().equals("WIT")) {
+            setChosenPackage("WIT");
+        }
+        else
+            setChosenPackage("Package 3");
     }
 
-    @Override
     public String toString() {
         return super.toString() +
-                "StudentMember{" +
-                "studentId='" + studentId + '\'' +
-                ", collegeName='" + collegeName + '\'' +
-                '}';
+                "\nStudent ID: " + getStudentId() +
+                "\nCollege: " + getCollegeName();
     }
 }

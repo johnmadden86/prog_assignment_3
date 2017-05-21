@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Date;
+import java.util.HashMap;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -30,7 +31,6 @@ class MenuController {
      */
     private MenuController() {
         gymApi = new GymApi();
-
         try {
             load();
         } catch (Exception e) {
@@ -54,19 +54,18 @@ class MenuController {
 
             switch (option) {
                 case "L": //login
-                    login();
+                    if (gymApi.getPersons().isEmpty()) {
+                        System.out.println("Error, no people registered");
+                        homePage();
+                    } else {
+                        login();
+                    }
                     break;
                 case "R": //register
-                    registration(false);
+                    registration(false, null);
                     break;
                 case "X":
-                    try {
-                        save();
-                        System.out.println("Exiting... bye");
-                    }
-                    catch (Exception e) {
-                        System.err.println("Error writing to file: " + e);
-                    }
+                    System.out.println("Exiting... bye");
                     System.exit(0);
                 default:
                     System.out.println("Invalid option entered: " + option);
@@ -76,7 +75,7 @@ class MenuController {
             }
     }
 
-    private void registration(boolean addingByTrainer) {
+    private void registration(boolean addingByTrainer, Trainer loggedInTrainer) {
         String mOrT;
         if (!addingByTrainer) {
         System.out.println("\n  Select an option");
@@ -104,12 +103,12 @@ class MenuController {
                     break;
                 case "M":
                     Member member;
-                    double height = validNextDouble("Enter height (m): ");
+                    double height = validNextDouble("Enter height (1m min, 3m max): ");
                     double startingWeight = validNextDouble("Enter starting weight (kg): ");
                     String packageChoice = validNextString("Enter package choice (Premium/Student/Basic): ");
                     switch (packageChoice) {
                         case "Premium":
-                            member = new PremiumMember(email, name, address, gender, height, startingWeight, packageChoice);
+                            member = new PremiumMember(email, name, address, gender, height, startingWeight, "Package 1");
                             gymApi.addMember(member);
                             break;
                         case "Student":
@@ -119,16 +118,25 @@ class MenuController {
                             gymApi.addMember(member);
                             break;
                         default:
-                            member = new BasicMember(email, name, address, gender, height, startingWeight, packageChoice);
+                            member = new PremiumMember(email, name, address, gender, height, startingWeight, "Package 2");
                             gymApi.addMember(member);
                         break;
                     }
-                    memberWelcomePage(member);
+                    if (addingByTrainer) {
+                        trainerWelcomePage(loggedInTrainer);
+                    } else {
+                        memberWelcomePage(member);
+                    }
                 default:
                     System.out.println("Invalid option entered: " + mOrT);
                     pause();
-                    registration(addingByTrainer);
+                    registration(addingByTrainer, loggedInTrainer);
             }
+        }
+        try {
+            save();
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e);
         }
         homePage();
     }
@@ -141,7 +149,7 @@ class MenuController {
         } else if (person instanceof Member) {
             memberWelcomePage((Member) person);
         } else {
-            System.out.println("Invalid option entered: " + email);
+            System.out.println("Invalid email entered: " + email);
             pause();
             login();
         }
@@ -164,7 +172,7 @@ class MenuController {
 
         switch (option) {
             case 1:
-                registration(true);
+                registration(true, trainer);
                 break;
             case 2:
                 System.out.println(gymApi.listMembers());
@@ -228,6 +236,11 @@ class MenuController {
                     String comment = validNextString("Enter comment: ");
                     member.addAssessment(date,
                             new Assessment(weight, chest, thigh, upperArm, waist, hips, trainer, comment));
+                    try {
+                        save();
+                    } catch (Exception e) {
+                        System.err.println("Error writing to file: " + e);
+                    }
                 } else {
                     System.out.println("No member with this email");
                 }
@@ -333,6 +346,10 @@ class MenuController {
     }
 
     private void viewMemberProfile(Member member) {
+        if (member instanceof StudentMember) {
+            StudentMember studentMember = (StudentMember) member;
+            System.out.println(studentMember.toString());
+        }
         System.out.println(member.toString());
         pause();
     }
@@ -380,6 +397,11 @@ class MenuController {
                 System.out.println("Invalid option entered: " + option);
                 pause();
                 break;
+        }
+        try {
+            save();
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e);
         }
         updateMember(member);
     }

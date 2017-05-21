@@ -2,85 +2,51 @@
   <controllers.GymApi>
     <members>
       <models.PremiumMember>
-        <email>wayne@manutd.com</email>
-        <name>Wayne Rooney</name>
-        <address>Liverpool</address>
-        <gender>M</gender>
-        <height>1.76</height>
-        <startingWeight>82.3</startingWeight>
-        <chosenPackage>Premium</chosenPackage>
-        <assessments/>
-      </models.PremiumMember>
-      <models.BasicMember>
         <email>paul@manutd.fr</email>
         <name>Paul Pogba</name>
         <address>France</address>
         <gender>M</gender>
-        <height>1.91</height>
-        <startingWeight>90.0</startingWeight>
-        <chosenPackage>Basic</chosenPackage>
+        <height>1.9</height>
+        <startingWeight>89.0</startingWeight>
+        <chosenPackage>Package 1</chosenPackage>
         <assessments>
           <entry>
-            <date>2017-02-14 00:00:00.0 UTC</date>
+            <date>2017-05-16 23:00:00.0 UTC</date>
             <models.Assessment>
-              <weight>89.0</weight>
+              <weight>88.0</weight>
               <chest>56.0</chest>
-              <thigh>656.0</thigh>
-              <upperArm>56.0</upperArm>
-              <waist>56.0</waist>
-              <hips>0.0</hips>
-              <comment>great</comment>
+              <thigh>56.0</thigh>
+              <upperArm>5656565.0</upperArm>
+              <waist>656.0</waist>
+              <hips>56.0</hips>
+              <comment>GOOD</comment>
               <trainer>
                 <email>jose@manutd.pt</email>
                 <name>Jose Mourinho</name>
                 <address>Portugal</address>
                 <gender>M</gender>
+                <speciality>Making excuses</speciality>
               </trainer>
             </models.Assessment>
           </entry>
           <entry>
-            <date>2017-05-11 23:00:00.0 UTC</date>
+            <date>2017-05-19 23:00:00.0 UTC</date>
             <models.Assessment>
-              <weight>92.0</weight>
-              <chest>45.0</chest>
-              <thigh>56.0</thigh>
-              <upperArm>45.0</upperArm>
-              <waist>23.0</waist>
-              <hips>0.0</hips>
-              <comment>very good</comment>
-              <trainer reference="../../../entry/models.Assessment/trainer"/>
-            </models.Assessment>
-          </entry>
-          <entry>
-            <date>2017-01-01 00:00:00.0 UTC</date>
-            <models.Assessment>
-              <weight>87.0</weight>
-              <chest>45.2</chest>
-              <thigh>65.3</thigh>
-              <upperArm>65.0</upperArm>
-              <waist>65.0</waist>
-              <hips>0.0</hips>
-              <comment>Suoer</comment>
+              <weight>86.0</weight>
+              <chest>12.0</chest>
+              <thigh>12.0</thigh>
+              <upperArm>12.0</upperArm>
+              <waist>12.0</waist>
+              <hips>12.0</hips>
+              <comment>good</comment>
               <trainer reference="../../../entry/models.Assessment/trainer"/>
             </models.Assessment>
           </entry>
         </assessments>
-      </models.BasicMember>
-      <models.StudentMember>
-        <email>david@manutd.es</email>
-        <name>David de Gea</name>
-        <address>Spain</address>
-        <gender>M</gender>
-        <height>1.95</height>
-        <startingWeight>92.5</startingWeight>
-        <chosenPackage>Student</chosenPackage>
-        <assessments/>
-        <studentId>w123456</studentId>
-        <collegeName>WIT</collegeName>
-      </models.StudentMember>
+      </models.PremiumMember>
     </members>
     <trainers>
-      <models.Trainer reference="../../members/models.BasicMember/assessments/entry/models.Assessment/trainer"/>
+      <models.Trainer reference="../../members/models.PremiumMember/assessments/entry/models.Assessment/trainer"/>
     </trainers>
   </controllers.GymApi>
 </object-stream>
