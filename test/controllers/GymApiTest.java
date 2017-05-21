@@ -111,6 +111,8 @@ class GymApiTest {
         gymApi.getMembers().add(premiumMember);
         assertEquals("No members with BMI in the category \"normal\"", gymApi.listMembersBySpecificBMICategory("NORMAL"));
         assertEquals("Zlatan Ibrahimovic\n", gymApi.listMembersBySpecificBMICategory("overw"));
+        premiumMember.setStartingWeight(88.5);
+        assertEquals("Zlatan Ibrahimovic\n", gymApi.listMembersBySpecificBMICategory("norm"));
     }
 
     @Test

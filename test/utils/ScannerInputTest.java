@@ -5,8 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.ScannerInput.validNextInt;
 
 class ScannerInputTest {
+
     @BeforeEach
     void setUp() {
     }
@@ -16,7 +18,7 @@ class ScannerInputTest {
     }
 
     @Test
-    void validNextInt() {
+    void testValidNextInt() {
     }
 
     @Test

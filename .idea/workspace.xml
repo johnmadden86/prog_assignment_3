@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8dbb968-e7a6-4560-9c2c-c2b70ef7ac0f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/controllers/GymApiTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/utils/ScannerInputTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/assignment_3/controllers/GymApi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/assignment_3/controllers/MenuController.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/assignment_3/models/Assessment.class" afterPath="$PROJECT_DIR$/out/production/assignment_3/models/Assessment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/assignment_3/models/Member.class" afterPath="$PROJECT_DIR$/out/production/assignment_3/models/Member.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/assignment_3/models/StudentMember.class" afterPath="$PROJECT_DIR$/out/production/assignment_3/models/StudentMember.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/utils/AnalyticsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/assignment_3/utils/Analytics.class" afterPath="$PROJECT_DIR$/out/production/assignment_3/utils/Analytics.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/assignment_3/controllers/GymApiTest.class" afterPath="$PROJECT_DIR$/out/test/assignment_3/controllers/GymApiTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/GymApi.java" afterPath="$PROJECT_DIR$/src/controllers/GymApi.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MenuController.java" afterPath="$PROJECT_DIR$/src/controllers/MenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Assessment.java" afterPath="$PROJECT_DIR$/src/models/Assessment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Member.java" afterPath="$PROJECT_DIR$/src/models/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/StudentMember.java" afterPath="$PROJECT_DIR$/src/models/StudentMember.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Analytics.java" afterPath="$PROJECT_DIR$/src/utils/Analytics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/ScannerInput.java" afterPath="$PROJECT_DIR$/src/utils/ScannerInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/MemberTest.java" afterPath="$PROJECT_DIR$/test/models/MemberTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/GymApiTest.java" afterPath="$PROJECT_DIR$/test/controllers/GymApiTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/utils/ScannerInputTest.java" afterPath="$PROJECT_DIR$/test/utils/ScannerInputTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/utils/UtilitiesTest.java" afterPath="$PROJECT_DIR$/test/utils/UtilitiesTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,84 +24,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MenuController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/MenuController.java">
+      <file leaf-file-name="ScannerInput.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/utils/ScannerInput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="297" column="33" lean-forward="false" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
-              <folding>
-                <element signature="docComment;method#main#0;class#MenuController#0" expanded="false" />
-                <element signature="docComment;method#MenuController#0;class#MenuController#0" expanded="false" />
-                <element signature="method#MenuController#0;class#MenuController#0" expanded="false" />
-                <element signature="docComment;method#homePage#0;class#MenuController#0" expanded="false" />
-                <element signature="method#homePage#0;class#MenuController#0" expanded="false" />
-                <element signature="method#registration#0;class#MenuController#0" expanded="false" />
-                <element signature="method#login#0;class#MenuController#0" expanded="false" />
-                <element signature="method#trainerWelcomePage#0;class#MenuController#0" expanded="false" />
-                <element signature="method#assessmentSubMenu#0;class#MenuController#0" expanded="false" />
-                <element signature="method#memberWelcomePage#0;class#MenuController#0" expanded="false" />
-                <element signature="method#viewMemberProfile#0;class#MenuController#0" expanded="false" />
-                <element signature="method#updateMember#0;class#MenuController#0" expanded="false" />
-                <element signature="method#progressSubMenu#0;class#MenuController#0" expanded="false" />
-                <element signature="method#save#0;class#MenuController#0" expanded="false" />
-                <element signature="method#load#0;class#MenuController#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="561">
+              <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GymApiTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/controllers/GymApiTest.java">
+      <file leaf-file-name="ScannerInputTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/utils/ScannerInputTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="109" column="31" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
-              <folding>
-                <element signature="method#tearDown#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#testMembers#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#testTrainers#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#getPersons#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#searchByEmail#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#searchMembersByName#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#listMembersWithIdealWeight#0;class#GymApiTest#0" expanded="false" />
-                <element signature="method#listMemberDetailsImperialAndMetric#0;class#GymApiTest#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GymApi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/GymApi.java">
+      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/Utilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
-              <folding>
-                <element signature="method#GymApi#0;class#GymApi#0" expanded="false" />
-                <element signature="method#getPersons#0;class#GymApi#0" expanded="false" />
-                <element signature="method#searchPersonsByEmail#0;class#GymApi#0" expanded="false" />
-                <element signature="method#searchMembersByName#0;class#GymApi#0" expanded="false" />
-                <element signature="method#listMembersWithIdealWeight#0;class#GymApi#0" expanded="false" />
-                <element signature="method#listMembers#0;class#GymApi#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Analytics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/Analytics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding>
-                <element signature="e#767#768#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-                <element signature="docComment;method#calculateBMI#0;class#Analytics#0" expanded="false" />
-                <element signature="method#calculateBMI#0;class#Analytics#0" expanded="false" />
-                <element signature="docComment;method#determineBMICategory#0;class#Analytics#0" expanded="false" />
-                <element signature="docComment;method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
-                <element signature="method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
-                <element signature="e#4486#4487#0" expanded="true" />
-                <element signature="e#4542#4543#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="12" column="32" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,6 +87,8 @@
       <find>validNextInt</find>
       <find>public</find>
       <find>index</find>
+      <find>bmiCategories.add(&quot;</find>
+      <find>listB</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -158,7 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gymapp.xml" />
         <option value="$PROJECT_DIR$/src/test/models/Trainer.java" />
         <option value="$PROJECT_DIR$/src/controllers/GymApiTest.groovy" />
         <option value="$PROJECT_DIR$/src/models/StudentMemberTest.groovy" />
@@ -194,21 +137,22 @@
         <option value="$PROJECT_DIR$/src/models/Trainer.java" />
         <option value="$PROJECT_DIR$/test/models/AssessmentTest.java" />
         <option value="$PROJECT_DIR$/test/models/PersonTest.java" />
-        <option value="$PROJECT_DIR$/src/models/PremiumMember.java" />
-        <option value="$PROJECT_DIR$/test/models/PremiumMemberTest.java" />
         <option value="$PROJECT_DIR$/src/utils/Utilities.java" />
         <option value="$PROJECT_DIR$/test/models/StudentMemberTest.java" />
         <option value="$PROJECT_DIR$/src/models/StudentMember.java" />
         <option value="$PROJECT_DIR$/src/models/Assessment.java" />
-        <option value="$PROJECT_DIR$/test/utils/UtilitiesTest.java" />
-        <option value="$PROJECT_DIR$/test/utils/ScannerInputTest.java" />
-        <option value="$PROJECT_DIR$/src/controllers/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/utils/ScannerInput.java" />
         <option value="$PROJECT_DIR$/test/models/MemberTest.java" />
         <option value="$PROJECT_DIR$/src/models/Member.java" />
         <option value="$PROJECT_DIR$/src/controllers/GymApi.java" />
-        <option value="$PROJECT_DIR$/src/utils/Analytics.java" />
         <option value="$PROJECT_DIR$/test/controllers/GymApiTest.java" />
+        <option value="$PROJECT_DIR$/test/models/PremiumMemberTest.java" />
+        <option value="$PROJECT_DIR$/src/models/PremiumMember.java" />
+        <option value="$PROJECT_DIR$/src/controllers/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/utils/Analytics.java" />
+        <option value="$PROJECT_DIR$/test/utils/AnalyticsTest.java" />
+        <option value="$PROJECT_DIR$/test/utils/ScannerInputTest.java" />
+        <option value="$PROJECT_DIR$/src/utils/ScannerInput.java" />
+        <option value="$PROJECT_DIR$/test/utils/UtilitiesTest.java" />
       </list>
     </option>
   </component>
@@ -271,6 +215,10 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -287,6 +235,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prog_assignment_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prog_assignment_3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -319,10 +285,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -361,8 +323,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="controllers" />
       <recent name="utils" />
+      <recent name="controllers" />
       <recent name="models" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -944,44 +906,44 @@
       <workItem from="1495126142128" duration="666000" />
       <workItem from="1495137326963" duration="736000" />
       <workItem from="1495198937548" duration="18278000" />
-      <workItem from="1495248053022" duration="43997000" />
+      <workItem from="1495248053022" duration="51729000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test - 2017.05.21 at 14h 33m 14s.xml">
+    <history-entry file="Test - 2017.05.21 at 16h 56m 18s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 14h 34m 28s.xml">
+    <history-entry file="Test - 2017.05.21 at 16h 56m 47s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 14h 35m 12s.xml">
+    <history-entry file="Test - 2017.05.21 at 16h 57m 15s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 14h 52m 04s.xml">
+    <history-entry file="Test - 2017.05.21 at 16h 58m 21s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 14h 56m 27s.xml">
+    <history-entry file="Test - 2017.05.21 at 16h 59m 41s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 15h 01m 01s.xml">
+    <history-entry file="Test - 2017.05.21 at 17h 10m 05s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 15h 04m 56s.xml">
+    <history-entry file="Test - 2017.05.21 at 17h 15m 12s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 15h 07m 42s.xml">
+    <history-entry file="Test - 2017.05.21 at 17h 16m 14s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 15h 08m 13s.xml">
+    <history-entry file="Test - 2017.05.21 at 17h 16m 42s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test - 2017.05.21 at 15h 09m 27s.xml">
+    <history-entry file="Test - 2017.05.21 at 17h 17m 23s.xml">
       <configuration name="Test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136433000" />
+    <option name="totallyTimeSpent" value="144165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -990,7 +952,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1057,7 +1019,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1156,13 +1118,6 @@
     <entry file="file://$PROJECT_DIR$/src/models/AssessmentTest.groovy" />
     <entry file="file://$PROJECT_DIR$/src/models/TrainerTest.groovy" />
     <entry file="file://$PROJECT_DIR$/src/models/PersonTest.groovy" />
-    <entry file="file://$PROJECT_DIR$/test/utils/AnalyticsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/MenuControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/utils/Enum.java" />
     <entry file="file://$PROJECT_DIR$/src/utils/BmiCategory.java" />
@@ -1192,54 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/PremiumMember.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="32" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/utils/UtilitiesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/utils/ScannerInputTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/ScannerInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/models/TrainerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1248,25 +1155,6 @@
             <element signature="method#tearDown#0;class#TrainerTest#0" expanded="false" />
             <element signature="method#testTrainerString#0;class#TrainerTest#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/models/PersonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding>
-            <element signature="method#testName#0;class#PersonTest#0" expanded="false" />
-            <element signature="method#testGender#0;class#PersonTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/models/PremiumMemberTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="44" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="13" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1372,32 +1260,8 @@
         <state relative-caret-position="204">
           <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding>
-            <element signature="e#298#299#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="297" column="33" lean-forward="false" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;method#main#0;class#MenuController#0" expanded="false" />
-            <element signature="docComment;method#MenuController#0;class#MenuController#0" expanded="false" />
-            <element signature="method#MenuController#0;class#MenuController#0" expanded="false" />
-            <element signature="docComment;method#homePage#0;class#MenuController#0" expanded="false" />
-            <element signature="method#homePage#0;class#MenuController#0" expanded="false" />
-            <element signature="method#registration#0;class#MenuController#0" expanded="false" />
-            <element signature="method#login#0;class#MenuController#0" expanded="false" />
-            <element signature="method#trainerWelcomePage#0;class#MenuController#0" expanded="false" />
-            <element signature="method#assessmentSubMenu#0;class#MenuController#0" expanded="false" />
-            <element signature="method#memberWelcomePage#0;class#MenuController#0" expanded="false" />
-            <element signature="method#viewMemberProfile#0;class#MenuController#0" expanded="false" />
-            <element signature="method#updateMember#0;class#MenuController#0" expanded="false" />
-            <element signature="method#progressSubMenu#0;class#MenuController#0" expanded="false" />
-            <element signature="method#save#0;class#MenuController#0" expanded="false" />
-            <element signature="method#load#0;class#MenuController#0" expanded="false" />
+            <element signature="e#298#299#0" expanded="false" />
+            <element signature="e#331#332#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1417,28 +1281,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Analytics.java">
+    <entry file="file://$PROJECT_DIR$/test/models/PremiumMemberTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="13" column="44" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="13" selection-end-column="44" />
           <folding>
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="docComment;method#calculateBMI#0;class#Analytics#0" expanded="false" />
-            <element signature="method#calculateBMI#0;class#Analytics#0" expanded="false" />
-            <element signature="docComment;method#determineBMICategory#0;class#Analytics#0" expanded="false" />
-            <element signature="docComment;method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
-            <element signature="method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
-            <element signature="e#4486#4487#0" expanded="true" />
-            <element signature="e#4542#4543#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/controllers/GymApiTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="109" column="31" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+        <state relative-caret-position="323">
+          <caret line="95" column="44" lean-forward="true" selection-start-line="90" selection-start-column="8" selection-end-line="95" selection-end-column="44" />
           <folding>
             <element signature="method#tearDown#0;class#GymApiTest#0" expanded="false" />
             <element signature="method#testMembers#0;class#GymApiTest#0" expanded="false" />
@@ -1446,9 +1302,121 @@
             <element signature="method#getPersons#0;class#GymApiTest#0" expanded="false" />
             <element signature="method#searchByEmail#0;class#GymApiTest#0" expanded="false" />
             <element signature="method#searchMembersByName#0;class#GymApiTest#0" expanded="false" />
-            <element signature="method#listMembersWithIdealWeight#0;class#GymApiTest#0" expanded="false" />
             <element signature="method#listMemberDetailsImperialAndMetric#0;class#GymApiTest#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/PremiumMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/models/PersonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="method#testName#0;class#PersonTest#0" expanded="false" />
+            <element signature="method#testGender#0;class#PersonTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Analytics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding>
+            <element signature="method#Analytics#0;class#Analytics#0" expanded="false" />
+            <element signature="method#setupBmiCategories#0;class#Analytics#0" expanded="false" />
+            <element signature="method#addCategories#0;class#Analytics#0" expanded="false" />
+            <element signature="method#listBmiCategories#0;class#Analytics#0" expanded="false" />
+            <element signature="docComment;method#calculateBMI#0;class#Analytics#0" expanded="false" />
+            <element signature="docComment;method#determineBMICategory#0;class#Analytics#0" expanded="false" />
+            <element signature="docComment;method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
+            <element signature="method#isIdealBodyWeight#0;class#Analytics#0" expanded="false" />
+            <element signature="docComment;method#toTwoDecimalPlaces#0;class#Analytics#0" expanded="false" />
+            <element signature="docComment;method#convertHeightMetresToInches#0;class#Analytics#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/utils/AnalyticsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#testSetupBmiCategories#0;class#AnalyticsTest#0" expanded="false" />
+            <element signature="method#testGetBmiCategory#0;class#AnalyticsTest#0" expanded="false" />
+            <element signature="e#1537#1538#0" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+            <element signature="method#testDetermineBMICategory#0;class#AnalyticsTest#0" expanded="false" />
+            <element signature="method#testIsIdealBodyWeight#0;class#AnalyticsTest#0" expanded="false" />
+            <element signature="method#testToTwoDecimalPlaces#0;class#AnalyticsTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="191" column="35" lean-forward="false" selection-start-line="191" selection-start-column="35" selection-end-line="191" selection-end-column="35" />
+          <folding>
+            <element signature="docComment;method#main#0;class#MenuController#0" expanded="false" />
+            <element signature="docComment;method#MenuController#0;class#MenuController#0" expanded="false" />
+            <element signature="method#MenuController#0;class#MenuController#0" expanded="false" />
+            <element signature="docComment;method#homePage#0;class#MenuController#0" expanded="false" />
+            <element signature="method#homePage#0;class#MenuController#0" expanded="false" />
+            <element signature="method#registration#0;class#MenuController#0" expanded="false" />
+            <element signature="method#login#0;class#MenuController#0" expanded="false" />
+            <element signature="method#assessmentSubMenu#0;class#MenuController#0" expanded="false" />
+            <element signature="method#memberWelcomePage#0;class#MenuController#0" expanded="false" />
+            <element signature="method#viewMemberProfile#0;class#MenuController#0" expanded="false" />
+            <element signature="method#updateMember#0;class#MenuController#0" expanded="false" />
+            <element signature="method#progressSubMenu#0;class#MenuController#0" expanded="false" />
+            <element signature="method#save#0;class#MenuController#0" expanded="false" />
+            <element signature="method#load#0;class#MenuController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/utils/ScannerInputTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/utils/UtilitiesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#330#362#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ScannerInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,13 +1,10 @@
 package utils;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
 
 public class ScannerInput {
 
@@ -17,7 +14,7 @@ public class ScannerInput {
             try {
                 System.out.print(prompt);
                 return Integer.parseInt( input.next() );
-            } catch (NumberFormatException e) {//catches any non-integer input, loop will run again
+            } catch (NumberFormatException e) {
                 System.err.println("\tEnter a valid number please.");
             }
         } while (true);

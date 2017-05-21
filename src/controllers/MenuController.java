@@ -189,7 +189,7 @@ class MenuController {
                 System.out.println(gymApi.listMembersWithIdealWeight());
                 break;
             case 6:
-                listBmiCategories();
+                System.out.println(listBmiCategories());
                 String category = validNextString("Enter a BMI category: ");
                 System.out.println(gymApi.listMembersBySpecificBMICategory(category));
                 break;

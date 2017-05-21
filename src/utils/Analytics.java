@@ -4,7 +4,7 @@ import models.Member;
 import java.util.ArrayList;
 
 public class Analytics {
-    private static ArrayList<String> bmiCategories;
+    public static ArrayList<String> bmiCategories;
 
     public Analytics() {
     }
@@ -25,17 +25,17 @@ public class Analytics {
         bmiCategories.add("Very severely obese");
     }
 
-    private static String getBmiCategory(int index) {
+    static String getBmiCategory(int index) {
         return bmiCategories.get(index);
     }
 
-    public static void listBmiCategories() {
+    public static String listBmiCategories() {
         setupBmiCategories();
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < bmiCategories.size(); index++) {
             list.append(getBmiCategory(index)).append("\n");
         }
-        System.out.println(list.toString());
+        return list.toString();
     }
 
     /**
@@ -114,11 +114,11 @@ public class Analytics {
      * Converts a member's height from metres to inches, 1m = 39.37 inches.
      * @return  Member's height in inches truncated to two decimal places
      */
-    private static double convertHeightMetresToInches(double height) {
+    public static double convertHeightMetresToInches(double height) {
         return toTwoDecimalPlaces(height * 39.37);
     }
 
-    private static double convertWeightKilogramsToPounds(double weight) {
+    public static double convertWeightKilogramsToPounds(double weight) {
         return toTwoDecimalPlaces(weight * 2.20);
     }
 }
