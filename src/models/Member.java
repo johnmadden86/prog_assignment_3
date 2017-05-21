@@ -21,14 +21,14 @@ public abstract class Member extends Person {
     }
 
     public void addAssessment(Date date, Assessment assessment){
-        assessments.put(date, assessment);
+        getAssessments().put(date, assessment);
     }
 
     public HashMap<Date, Assessment> getAssessments() {
         return assessments;
     }
 
-    public Assessment getAssessment (Date date) {
+    Assessment getAssessment(Date date) {
         return getAssessments().get(date);
     }
 
@@ -45,7 +45,7 @@ public abstract class Member extends Person {
         this.height = toTwoDecimalPlaces(height);
     }
 
-    public double getStartingWeight() {
+    double getStartingWeight() {
         return startingWeight;
     }
 
@@ -67,7 +67,7 @@ public abstract class Member extends Person {
         return weight;
     }
 
-    public String getChosenPackage() {
+    String getChosenPackage() {
         return chosenPackage;
     }
 
@@ -85,11 +85,11 @@ public abstract class Member extends Person {
                 "\nChosen Package: " + getChosenPackage();
     }
 
-    public Assessment latestAssessment() {
-        if (assessments.isEmpty()) {
+    Assessment latestAssessment() {
+        if (getAssessments().isEmpty()) {
             return null;
         } else {
-            return assessments.get(sortedAssessmentDates().first());
+            return getAssessments().get(sortedAssessmentDates().first());
         }
     }
 

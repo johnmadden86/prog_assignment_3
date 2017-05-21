@@ -1,8 +1,5 @@
 package models;
 
-/**
- * Created by John on 24/04/2017.
- */
 public class Assessment {
     private double weight, chest, thigh, upperArm, waist, hips;
     private String comment;
@@ -20,63 +17,63 @@ public class Assessment {
         setComment(comment);
     }
 
-    public double getWeight() {
+    double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    private void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public double getChest() {
+    double getChest() {
         return chest;
     }
 
-    public void setChest(double chest) {
+    private void setChest(double chest) {
         this.chest = chest;
     }
 
-    public double getThigh() {
+    double getThigh() {
         return thigh;
     }
 
-    public void setThigh(double thigh) {
+    private void setThigh(double thigh) {
         this.thigh = thigh;
     }
 
-    public double getUpperArm() {
+    double getUpperArm() {
         return upperArm;
     }
 
-    public void setUpperArm(double upperArm) {
+    private void setUpperArm(double upperArm) {
         this.upperArm = upperArm;
     }
 
-    public double getWaist() {
+    double getWaist() {
         return waist;
     }
 
-    public void setWaist(double waist) {
+    private void setWaist(double waist) {
         this.waist = waist;
     }
 
-    public double getHips() {
+    double getHips() {
         return hips;
     }
 
-    public void setHips(double hips) {
+    private void setHips(double hips) {
         this.hips = hips;
     }
 
-    public Trainer getTrainer() {
+    Trainer getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(Trainer trainer) {
+    private void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
 
-    public String getComment() {
+    String getComment() {
         return comment;
     }
 

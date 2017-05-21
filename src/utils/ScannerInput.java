@@ -54,4 +54,17 @@ public class ScannerInput {
         System.out.print(prompt);
         return input.nextLine();
     }
+
+    public static int validIndex (String prompt, ArrayList arrayList) {
+        do {
+            int index = validNextInt(prompt);
+            try {
+                arrayList.get(index);
+                return index;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Error, invalid index");
+
+            }
+        } while (true);
+    }
 }

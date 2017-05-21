@@ -18,15 +18,15 @@ public class StudentMember extends Member{
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
-    public String getCollegeName() {
+    String getCollegeName() {
         return collegeName;
     }
 
-    public void setCollegeName(String collegeName) {
+    private void setCollegeName(String collegeName) {
         this.collegeName = collegeName;
     }
 

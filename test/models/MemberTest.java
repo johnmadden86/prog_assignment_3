@@ -101,6 +101,12 @@ class MemberTest {
         premiumMember.getAssessments().put(date2, assessment2);
         premiumMember.getAssessments().put(date1, assessment1);
         assertSame(assessment2, premiumMember.latestAssessment());
+
+        premiumMember.getAssessments().clear();
+
+        premiumMember.getAssessments().put(date1, assessment2);
+        premiumMember.getAssessments().put(date1, assessment1);
+        assertSame(assessment1, premiumMember.latestAssessment());
     }
 
     @Test
@@ -118,6 +124,13 @@ class MemberTest {
         premiumMember.getAssessments().put(date2, assessment2);
         premiumMember.getAssessments().put(date1, assessment1);
         assertEquals(dates, premiumMember.sortedAssessmentDates());
+        /*
+        premiumMember.getAssessments().clear();
+
+        premiumMember.getAssessments().put(date1, assessment2);
+        premiumMember.getAssessments().put(date1, assessment1);
+        assertEquals(dates, premiumMember.sortedAssessmentDates());
+        fails as hash-map keys must be unique, value is replaced */
     }
 
     @Test

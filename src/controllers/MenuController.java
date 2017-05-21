@@ -293,7 +293,7 @@ class MenuController {
                 String nameSearch = validNextString("Enter name: ");
                 System.out.println(gymApi.searchMembersByName(nameSearch));
                 if (!gymApi.searchMembersByName(nameSearch).equals("No members")) {
-                    int index = validNextInt("Enter index: ");
+                    int index = validIndex("Enter index: ", gymApi.getMembers());
                     Member member1 = gymApi.getMembers().get(index);
                     System.out.println(member1.specificMemberProgress());
                 }

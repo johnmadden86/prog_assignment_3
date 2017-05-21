@@ -7,11 +7,14 @@ public class Analytics {
     private static ArrayList<String> bmiCategories;
 
     public Analytics() {
+    }
+
+    public static void setupBmiCategories() {
         bmiCategories = new ArrayList<>();
         addCategories();
     }
 
-    private static void addCategories() {
+    public static void addCategories() {
         bmiCategories.add("Very severely underweight");
         bmiCategories.add("Severely underweight");
         bmiCategories.add("Underweight");
@@ -27,15 +30,13 @@ public class Analytics {
     }
 
     public static void listBmiCategories() {
-        bmiCategories = new ArrayList<>();
-        addCategories();
+        setupBmiCategories();
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < bmiCategories.size(); index++) {
             list.append(getBmiCategory(index)).append("\n");
         }
         System.out.println(list.toString());
     }
-
 
     /**
      * Calculate a member's body mass index, weight divided by height squared
@@ -115,5 +116,9 @@ public class Analytics {
      */
     private static double convertHeightMetresToInches(double height) {
         return toTwoDecimalPlaces(height * 39.37);
+    }
+
+    private static double convertWeightKilogramsToPounds(double weight) {
+        return toTwoDecimalPlaces(weight * 2.20);
     }
 }

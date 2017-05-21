@@ -15,59 +15,48 @@ public class GymApi {
     GymApi() {
         members = new ArrayList<>();
         trainers = new ArrayList<>();
-
     }
 
     void addMember(Member member) {
-        members.add(member);
+        getMembers().add(member);
     }
 
     ArrayList<Member> getMembers() {
         return members;
     }
 
-    public int numberOfMembers() {
-        return members.size();
-    }
-
     void addTrainer(Trainer trainer) {
-        trainers.add(trainer);
+        getTrainers().add(trainer);
     }
 
-    public ArrayList<Trainer> getTrainers() {
+    ArrayList<Trainer> getTrainers() {
         return trainers;
     }
 
-    public int numberOfTrainers() {
-        return trainers.size();
-    }
-
     ArrayList<Person> getPersons() {
-        ArrayList<Person> persons = new ArrayList<>(members);
-        persons.addAll(trainers);
+        ArrayList<Person> persons = new ArrayList<>(getMembers());
+        persons.addAll(getTrainers());
         return persons;
     }
 
-    public boolean isValidMemberIndex(int index){
-        return false;
-    }
-
-    public boolean isValidTrainerIndex(int index){
-        return false;
+    Person searchPersonsByEmail(String emailEntered){
+        Person searchResult = null;
+        for (Person person : getPersons()) {
+            if(person.getEmail().equals(emailEntered)) {
+                searchResult = person;
+            }
+        }
+        return searchResult;
     }
 
     Member searchMembersByEmail(String emailEntered){
         return (Member) searchPersonsByEmail(emailEntered);
     }
 
-    public Trainer searchTrainersByEmail(String emailEntered){
-        return (Trainer) searchPersonsByEmail(emailEntered);
-    }
-
     String searchMembersByName(String nameEntered){
         StringBuilder list = new StringBuilder();
         for (int index = 0; index < getMembers().size(); index++) {
-            if(getMembers().get(index).getName().contains(nameEntered)) {
+            if(getMembers().get(index).getName().toUpperCase().contains(nameEntered.toUpperCase())) {
                 list.append(index).append(" - ").append(getMembers().get(index).getName()).append("\n");
             }
         }
@@ -118,20 +107,10 @@ public class GymApi {
         }
     }
 
-    Person searchPersonsByEmail(String emailEntered){
-        Person searchResult = null;
-        for (Person person : getPersons()) {
-            if(person.getEmail().equals(emailEntered)) {
-                searchResult = person;
-            }
-        }
-        return searchResult;
-    }
-
     String listMembers() {
         StringBuilder list = new StringBuilder();
-        for (int index = 0; index < members.size(); index++) {
-            list.append(index).append(" - ").append(members.get(index).getName()).append("\n");
+        for (int index = 0; index < getMembers().size(); index++) {
+            list.append(index).append(" - ").append(getMembers().get(index).getName()).append("\n");
         }
         if (list.toString().equals("")) {
             return "No members";
@@ -141,17 +120,17 @@ public class GymApi {
     }
 
     String listMembersBySpecificBMICategory(String category) {
-        if(members.isEmpty()) {
+        if(getMembers().isEmpty()) {
             return "No members";
         } else {
             StringBuilder list = new StringBuilder();
-            for (Member member : members) {
+            for (Member member : getMembers()) {
                 if(determineBMICategory(calculateBMI(member)).toUpperCase().contains(category.toUpperCase())) {
                     list.append(member.getName()).append("\n");
                 }
             }
             if (list.toString().equals("")) {
-                return "No members with BMI in the category " + category.toLowerCase();
+                return "No members with BMI in the category \"" + category.toLowerCase() +"\"";
             } else {
                 return list.toString();
             }
