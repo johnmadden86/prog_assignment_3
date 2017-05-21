@@ -12,6 +12,7 @@ import static utils.ScannerInput.*;
 import static utils.Utilities.parseDate;
 
 class ScannerInputTest {
+    @Test
 
     @BeforeEach
     void setUp() {
@@ -52,6 +53,14 @@ class ScannerInputTest {
     @Test
     void testValidNextString() {
         String userInput = "test";
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+        String input = validNextString("placeholder");
+        assertEquals(userInput, input);
+    }
+
+    @Test
+    void readValidEmail() {
+        String userInput = "address@email.domain";
         System.setIn(new ByteArrayInputStream(userInput.getBytes()));
         String input = validNextString("placeholder");
         assertEquals(userInput, input);

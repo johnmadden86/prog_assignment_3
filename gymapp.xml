@@ -2,51 +2,24 @@
   <controllers.GymApi>
     <members>
       <models.PremiumMember>
-        <email>paul@manutd.fr</email>
-        <name>Paul Pogba</name>
-        <address>France</address>
+        <email>zlatan@manutd.se</email>
+        <name>Zlatan Ibrahimovic</name>
+        <address>Sweden</address>
         <gender>M</gender>
-        <height>1.9</height>
-        <startingWeight>89.0</startingWeight>
-        <chosenPackage>Package 1</chosenPackage>
-        <assessments>
-          <entry>
-            <date>2017-05-16 23:00:00.0 UTC</date>
-            <models.Assessment>
-              <weight>88.0</weight>
-              <chest>56.0</chest>
-              <thigh>56.0</thigh>
-              <upperArm>5656565.0</upperArm>
-              <waist>656.0</waist>
-              <hips>56.0</hips>
-              <comment>GOOD</comment>
-              <trainer>
-                <email>jose@manutd.pt</email>
-                <name>Jose Mourinho</name>
-                <address>Portugal</address>
-                <gender>M</gender>
-                <speciality>Making excuses</speciality>
-              </trainer>
-            </models.Assessment>
-          </entry>
-          <entry>
-            <date>2017-05-19 23:00:00.0 UTC</date>
-            <models.Assessment>
-              <weight>86.0</weight>
-              <chest>12.0</chest>
-              <thigh>12.0</thigh>
-              <upperArm>12.0</upperArm>
-              <waist>12.0</waist>
-              <hips>12.0</hips>
-              <comment>good</comment>
-              <trainer reference="../../../entry/models.Assessment/trainer"/>
-            </models.Assessment>
-          </entry>
-        </assessments>
+        <height>1.95</height>
+        <startingWeight>87.0</startingWeight>
+        <chosenPackage>Package 2</chosenPackage>
+        <assessments/>
       </models.PremiumMember>
     </members>
     <trainers>
-      <models.Trainer reference="../../members/models.PremiumMember/assessments/entry/models.Assessment/trainer"/>
+      <models.Trainer>
+        <email>jose@manutd.pt</email>
+        <name>Jose Mourinho</name>
+        <address>Portugal</address>
+        <gender>M</gender>
+        <speciality>Mking excuses</speciality>
+      </models.Trainer>
     </trainers>
   </controllers.GymApi>
 </object-stream>

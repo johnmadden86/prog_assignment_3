@@ -43,16 +43,20 @@ public abstract class Person {
     }
 
     public void setGender(String gender) {
-        gender = gender.substring(0,1).toUpperCase();
-        if (gender.equals("M") || gender.equals("F")) {
-            this.gender = gender;
-        } else {
-            if (this.gender == null) {
-                gender = "Unspecified";
+        if (gender.length() > 0) {
+            gender = gender.substring(0,1).toUpperCase();
+            if (gender.equals("M") || gender.equals("F")) {
+                this.gender = gender;
             } else {
-                gender = this.gender;
+                if (this.gender == null) {
+                    gender = "Unspecified";
+                } else {
+                    gender = this.gender;
+                }
+                this.gender = gender;
             }
-            this.gender = gender;
+        } else {
+            this.gender = "Unspecified";
         }
     }
 

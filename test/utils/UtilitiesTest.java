@@ -11,7 +11,7 @@ import static utils.Utilities.parseDate;
 import static utils.Utilities.printShortDate;
 
 @SuppressWarnings("deprecation")
-class UtilitiesTest {
+class UtilitiesTest{
     private Date date;
     @BeforeEach
     void setUp() {

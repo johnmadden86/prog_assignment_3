@@ -1,5 +1,4 @@
 package models;
-
 public class StudentMember extends Member{
     private String studentId;
     private String collegeName;

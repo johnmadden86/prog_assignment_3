@@ -102,7 +102,7 @@ class AnalyticsTest {
 
     @Test
     void testConvertWeightKilogramsToPounds() {
-            assertEquals(2.2, convertWeightKilogramsToPounds(), 0.01);
+            assertEquals(2.2, convertWeightKilogramsToPounds(1), 0.01);
         }
 
 }

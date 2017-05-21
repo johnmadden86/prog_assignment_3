@@ -46,6 +46,22 @@ public class ScannerInput {
         } while(true);
     }
 
+    public static String readValidEmail(String prompt) {
+        String email;
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println(prompt);
+            email = input.nextLine();
+            if(!email.matches("^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.([a-zA-Z.]{2,4})$")) {
+                System.out.println("Invalid email address");
+            } else {
+                break;
+            }
+        } while(true);
+
+        return email;
+    }
+
     public static String validNextString(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt);
@@ -64,4 +80,5 @@ public class ScannerInput {
             }
         } while (true);
     }
+
 }

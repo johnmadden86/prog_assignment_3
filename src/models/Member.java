@@ -5,11 +5,24 @@ import java.util.*;
 import static utils.Analytics.toTwoDecimalPlaces;
 import static utils.Utilities.printShortDate;
 
+/**
+ * abstract class for the object of type member
+ */
 public abstract class Member extends Person {
     private double height, startingWeight;
     private String chosenPackage;
     private final HashMap<Date,Assessment> assessments;
 
+    /**
+     * Constructor for objects of type member
+     * @param email
+     * @param name
+     * @param address
+     * @param gender
+     * @param height
+     * @param startingWeight
+     * @param chosenPackage
+     */
     Member(String email, String name, String address, String gender,
            double height, double startingWeight, String chosenPackage) {
 
