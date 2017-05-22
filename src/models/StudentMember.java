@@ -39,7 +39,7 @@ public class StudentMember extends Member{
 
     /**
      * setter for student id
-     * @param studentId
+     * @param studentId student id
      */
     void setStudentId(String studentId) {
         this.studentId = studentId;

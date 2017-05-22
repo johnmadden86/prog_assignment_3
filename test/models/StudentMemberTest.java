@@ -43,8 +43,4 @@ class StudentMemberTest {
         assertEquals("WIT", studentMember2.getChosenPackage());
     }
 
-    @Test
-    void testStudentString() {
-    }
-
 }

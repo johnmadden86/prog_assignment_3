@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 class GymApi {
     private final ArrayList<Member> members;
+    private final ArrayList<Member> selectedMembers;
     private final ArrayList<Trainer> trainers;
 
     /**
@@ -19,6 +20,7 @@ class GymApi {
     GymApi() {
         members = new ArrayList<>();
         trainers = new ArrayList<>();
+        selectedMembers = new ArrayList<>();
     }
 
     /**
@@ -87,6 +89,10 @@ class GymApi {
         return (Member) searchPersonsByEmail(emailEntered);
     }
 
+    ArrayList<Member> getSelectedMembers() {
+        return selectedMembers;
+    }
+
     /**
      * Methid to search by name
      * @param nameEntered the name to search for
@@ -94,9 +100,12 @@ class GymApi {
      */
     String searchMembersByName(String nameEntered){
         StringBuilder list = new StringBuilder();
-        for (int index = 0; index < getMembers().size(); index++) {
-            if(getMembers().get(index).getName().toUpperCase().contains(nameEntered.toUpperCase())) {
-                list.append(index).append(" - ").append(getMembers().get(index).getName()).append("\n");
+        for (Member member : getMembers()) {
+            if(member.getName().toUpperCase().contains(nameEntered.toUpperCase())) {
+                getSelectedMembers().add(member);
+            }
+            for (int index = 0; index < getSelectedMembers().size(); index++) {
+                list.append(index).append(" - ").append(getSelectedMembers().get(index).getName()).append("\n");
             }
         }
         if (list.toString().equals("")) {

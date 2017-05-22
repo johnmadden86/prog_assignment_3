@@ -138,6 +138,6 @@ public class Analytics {
      */
     @Contract(pure = true)
     public static double convertWeightKilogramsToPounds(double weight) {
-        return toTwoDecimalPlaces((double) weight * 2.20);
+        return toTwoDecimalPlaces(weight * 2.20);
     }
 }

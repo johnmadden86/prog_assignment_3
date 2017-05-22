@@ -116,7 +116,4 @@ class GymApiTest {
         assertEquals("Zlatan Ibrahimovic\n", gymApi.listMembersBySpecificBMICategory("norm"));
     }
 
-    @Test
-    void listMemberDetailsImperialAndMetric() {
-    }
 }

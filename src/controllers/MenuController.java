@@ -2,7 +2,6 @@ package controllers;
 import models.*;
 
 import com.google.gson.*;
-import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.util.Date;
@@ -317,8 +316,8 @@ class MenuController {
                 String nameSearch = validNextString("Enter name: ");
                 System.out.println(gymApi.searchMembersByName(nameSearch));
                 if (!gymApi.searchMembersByName(nameSearch).equals("No members")) {
-                    int index = validIndex("Enter index: ", gymApi.getMembers());
-                    Member member1 = gymApi.getMembers().get(index);
+                    int index = validIndex("Enter index: ", gymApi.getSelectedMembers());
+                    Member member1 = gymApi.getSelectedMembers().get(index);
                     System.out.println(member1.specificMemberProgress());
                 }
                 break;

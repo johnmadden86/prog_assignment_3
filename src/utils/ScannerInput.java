@@ -102,7 +102,7 @@ public class ScannerInput {
      * @param arrayList the array list to check against
      * @return an integer corresponding to an index in the array list
      */
-    public static int validIndex (String prompt, ArrayList arrayList) {
+    public static int validIndex (@SuppressWarnings("SameParameterValue") String prompt, ArrayList arrayList) {
         do {
             int index = validNextInt(prompt);
             try {

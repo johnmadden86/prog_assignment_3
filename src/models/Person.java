@@ -81,7 +81,7 @@ public abstract class Person {
 
     /**
      * setter for gender (M, F, or Unspecified)
-     * @param gender
+     * @param gender gender
      */
     public void setGender(String gender) {
         if (gender.length() > 0) {
